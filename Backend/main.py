@@ -77,6 +77,8 @@ async def get_book(book_isbn: str, db: db_dependency):
 
 # this will add users to the database, thus should be used by the
 # frontend to create users (register accounts)
+# TODO: Check whether username is already taken
+# TODO: Make sure to hash user password before storing
 @app.post("/users/", status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserBase, db: db_dependency):
     db_user = models.User(**user.model_dump())
