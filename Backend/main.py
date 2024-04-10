@@ -3,6 +3,7 @@ from typing import Annotated
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import models
+import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 
@@ -32,7 +33,22 @@ def get_db():
         
 db_dependency = Annotated[Session, Depends(get_db)]
 
+# this allows for a string to be taken in and be converited into a hash value
+# it will then return a hash value 
+def stringToHash(stringPassword):
+    h = hashlib.new("SHA256")
+    h.update(stringPassword.encode())
+    password_hash = h.hexdigest()
+    return password_hash
 
+# this checks the user's hash value password to be check
+# aginst what the user inputed to login
+def isPasswordCorrect(correct,check):
+    check = stringToHash(check)
+    if (correct == check):
+        return True
+    else:
+        return False
 
 # this allows for the React App (frontend) to access FastAPI 
 # (the backend). It assumes the React App is running on
@@ -81,9 +97,15 @@ async def get_book(book_isbn: str, db: db_dependency):
 # TODO: Make sure to hash user password before storing
 @app.post("/users/", status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserBase, db: db_dependency):
-    db_user = models.User(**user.model_dump())
-    db.add(db_user)
-    db.commit()
+    holdUser = user.model_dump()
+    username = db.query(models.User).filter(models.User.username == holdUser["username"]).first()
+    if username:
+        raise HTTPException(status_code=409, detail='User already exists')
+    else:
+        holdUser["password"] = stringToHash(holdUser["password"])
+        db_user = models.User(**holdUser)
+        db.add(db_user)
+        db.commit()
 
 
 # this filters the users to grab a specific row from the database
@@ -94,5 +116,31 @@ async def read_user(user: str, db: db_dependency):
     username = db.query(models.User).filter(models.User.username == user).first()
     if username is None:
         raise HTTPException(status_code=404, detail='User not found')
-    
     return username
+
+
+# this filters out the user based on username then get the input from the user
+# constiting of their current password, and their new password twice
+#  then checks and either changes the password or gives error
+@app.post("/passwords/", status_code=status.HTTP_201_CREATED)
+async def change_password(currentpassword:str, newpassword:str, passwordcheck:str, user:str, db: db_dependency):
+    username = db.query(models.User).filter(models.User.username == user).first()
+    if username and isPasswordCorrect(username.password,currentpassword):
+        newpassword = stringToHash(newpassword)
+        if isPasswordCorrect(newpassword,passwordcheck):
+            username.password = newpassword
+            db.commit()
+        else:
+            raise HTTPException(status_code=401, detail='Invalid Password')
+    else:
+        raise HTTPException(status_code=401, detail='Invalid Username or Password')
+
+# This filter out the user from the database and takes and input for a password from the user
+# It then check if the user is in table and if the inputted password is correct
+@app.get("/password/", status_code=status.HTTP_201_CREATED)
+async def login(passwordinput:str, user:str, db: db_dependency):
+    username = db.query(models.User).filter(models.User.username == user).first()
+    if username and isPasswordCorrect(username.password,passwordinput):
+        raise HTTPException(status_code=status.HTTP_200_OK, detail='Login successful')
+    else:
+        raise HTTPException(status_code=401, detail='Invalid Username or Password')
