@@ -1,5 +1,10 @@
+import { Navbar } from "../Navbar";
+
 export const Register = () => {
     return (
-        <h1>Registering!!!!!</h1>
+        <>
+            <Navbar/>
+            <h1>Registering!!!!!</h1>
+        </>
     );
 }

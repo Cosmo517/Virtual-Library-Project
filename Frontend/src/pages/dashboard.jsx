@@ -1,5 +1,11 @@
+import { Link } from "react-router-dom";
+import { Navbar } from "../Navbar";
+
 export const Dashboard = () => {
     return (
-        <h1>Dashboard!!!!! I love you so much</h1>
+        <>
+            <Navbar/>
+            <h1>Dashboard!</h1>
+        </>
     );
 }

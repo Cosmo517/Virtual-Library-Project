@@ -1,5 +1,10 @@
+import { Navbar } from "../Navbar";
+
 export const Search = () => {
     return (
-        <h1>Searching!!!!!</h1>
+        <>
+            <Navbar/>
+            <h1>Searching!!!!!</h1>
+        </>
     );
 }

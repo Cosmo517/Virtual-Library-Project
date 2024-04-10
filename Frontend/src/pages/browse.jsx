@@ -1,5 +1,10 @@
+import { Navbar } from "../Navbar";
+
 export const Browse = () => {
     return (
-        <h1>Browsing!!!!!</h1>
+        <>
+            <Navbar/>
+            <h1>Browsing!!!!!</h1>
+        </>
     );
 }
