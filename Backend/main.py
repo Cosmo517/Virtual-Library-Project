@@ -9,7 +9,11 @@ from sqlalchemy.orm import Session
 import logging
 
 app = FastAPI()
+models.Base.metadata.create_all(bind=engine)
 
+# this allows for the React App (frontend) to access FastAPI 
+# (the backend). It assumes the React App is running on
+# local host on port 5173
 origins = [
     '127.0.0.1:49462' 
 ]
@@ -49,12 +53,8 @@ def get_db():
         yield db
     finally:
         db.close()
-        
-        
-
 
 db_dependency = Annotated[Session, Depends(get_db)]
-models.Base.metadata.create_all(bind=engine)
 
 # this allows for a string to be taken in and be converited into a hash value
 # it will then return a hash value 
@@ -72,12 +72,6 @@ def isPasswordCorrect(correct,check):
         return True
     else:
         return False
-
-
-# this allows for the React App (frontend) to access FastAPI 
-# (the backend). It assumes the React App is running on
-# local host on port 5173
-
 
 #! Below here (should I think) be all the database queries
 
