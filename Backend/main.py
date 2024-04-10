@@ -1,14 +1,27 @@
 from fastapi import FastAPI, HTTPException, Depends, status
-from typing import Annotated
+from typing import Annotated, List
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import models
 import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
+import logging
 
 app = FastAPI()
-models.Base.metadata.create_all(bind=engine)
+
+origins = [
+    '127.0.0.1:49462' 
+]
+
+# # this just allows the origin thing from above
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
 
 class BooksBase(BaseModel):
     isbn: str
@@ -18,6 +31,12 @@ class BooksBase(BaseModel):
     page_count: int
     published_year: int
     category: str
+    
+class BooksModel(BooksBase):
+    isbn: str
+    
+    class Config:
+        from_attributes = True
     
 class UserBase(BaseModel):
     username: str
@@ -31,7 +50,11 @@ def get_db():
     finally:
         db.close()
         
+        
+
+
 db_dependency = Annotated[Session, Depends(get_db)]
+models.Base.metadata.create_all(bind=engine)
 
 # this allows for a string to be taken in and be converited into a hash value
 # it will then return a hash value 
@@ -50,21 +73,13 @@ def isPasswordCorrect(correct,check):
     else:
         return False
 
+
 # this allows for the React App (frontend) to access FastAPI 
 # (the backend). It assumes the React App is running on
 # local host on port 5173
-origins = [
-    'http://localhost:5173' 
-]
 
-# # this just allows the origin thing from above
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-)
 
 #! Below here (should I think) be all the database queries
-
 
 # this will add books to the database, thus should be used
 # by the frontend to add books
@@ -85,8 +100,10 @@ async def get_book(book_isbn: str, db: db_dependency):
 
 
 # TODO: the get_book above only searched for a single book, we need one for all books
-
-
+@app.get('/books/', response_model=List[BooksModel])
+async def read_books(db: db_dependency, skip: int = 0, limit: int = 100):
+    books = db.query(models.Books).offset(skip).limit(limit).all()
+    return books
 
 # TODO: Create a DELETE book function
 
