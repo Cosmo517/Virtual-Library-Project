@@ -12,7 +12,6 @@ export const Login = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         let signedjwt = await api.post('/login/', formData)
-        console.log('data: ', signedjwt['data'].length)
         setFormData({
             username: '',
             password: ''

@@ -2,7 +2,6 @@ import Cookies from 'js-cookie'
 import api from "../src/api"
 import { Navigate, Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { AuthProvider } from './Auth'
 
 export const PrivateRoutes = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(null)  
@@ -18,15 +17,18 @@ export const PrivateRoutes = () => {
                 else
                 {
                     const token = await api.post("/token/", { 'token' : Cookies.get('token') })
-                    if (Object.keys(token).length != 0)
+                    if (token.data != null)
                     {
                         setIsAuthenticated(true)
+                    }
+                    else
+                    {
+                        setIsAuthenticated(false)
                     }
                 }
             }
             catch (err)
             {
-                console.log('error, ', err)
                 setIsAuthenticated(false)
             }
 
