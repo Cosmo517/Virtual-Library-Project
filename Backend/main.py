@@ -6,7 +6,7 @@ import models
 import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
-import logging
+from JWT_handler import signJWT, decodeJWT
 
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
@@ -15,7 +15,7 @@ models.Base.metadata.create_all(bind=engine)
 # (the backend). It assumes the React App is running on
 # local host on port 5173
 origins = [
-    '127.0.0.1:49462' 
+    '127.0.0.1:5173' 
 ]
 
 # # this just allows the origin thing from above
@@ -46,7 +46,14 @@ class UserBase(BaseModel):
     username: str
     password: str
     administrator: int
+
+class LoginRequest(BaseModel):
+    username: str
+    password: str
     
+class JWT_token(BaseModel):
+    token: str
+
 def get_db():
     db = SessionLocal()
     try:
@@ -148,10 +155,16 @@ async def change_password(currentpassword:str, newpassword:str, passwordcheck:st
 
 # This filter out the user from the database and takes and input for a password from the user
 # It then check if the user is in table and if the inputted password is correct
-@app.get("/password/", status_code=status.HTTP_201_CREATED)
-async def login(passwordinput:str, user:str, db: db_dependency):
-    username = db.query(models.User).filter(models.User.username == user).first()
-    if username and isPasswordCorrect(username.password,passwordinput):
-        raise HTTPException(status_code=status.HTTP_200_OK, detail='Login successful')
+@app.post("/login/")
+async def login(login: LoginRequest, db: db_dependency):
+    user = db.query(models.User).filter(models.User.username == login.username).first()
+    if user and isPasswordCorrect(user.password, login.password):
+        return signJWT(user.username, user.administrator)
     else:
-        raise HTTPException(status_code=401, detail='Invalid Username or Password')
+        return {}
+
+@app.post("/token/")
+async def validate_jwt(token: JWT_token, db: db_dependency):
+    data = decodeJWT(token.token)
+    print(data)
+    return data
