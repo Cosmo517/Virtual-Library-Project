@@ -49,6 +49,10 @@ export const Register = () => {
                     <button type='Register' className='btn btn-primary'>
                         Register
                     </button>
+
+                    <button className='btn btn-primary' onClick={() => {window.location.href='/#/login'}}>
+                        Back to Login
+                    </button>
                 </form>
             </div>
         </>
