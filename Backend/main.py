@@ -157,6 +157,8 @@ async def change_password(currentpassword:str, newpassword:str, passwordcheck:st
 # It then check if the user is in table and if the inputted password is correct
 @app.post("/login/")
 async def login(login: LoginRequest, db: db_dependency):
+    if login.username == '':
+        return {}
     user = db.query(models.User).filter(models.User.username == login.username).first()
     if user and isPasswordCorrect(user.password, login.password):
         return signJWT(user.username, user.administrator)

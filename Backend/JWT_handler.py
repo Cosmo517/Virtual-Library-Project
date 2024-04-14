@@ -29,8 +29,6 @@ def signJWT(username: str, administrator: int):
         "expire" : int(time.time()) + (60 * 60)
     }
     token = jwt.encode(payload, JWT_secret, algorithm=JWT_algorithm)
-    # decode = jwt.decode(token, JWT_secret, JWT_algorithm)
-    # print('Inside sign jwt: ', decode)
     return token_response(token)
 
 # decodes the JWT token, returns whether its expired or not

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api'
-import { Navbar } from "../../Components/Navbar";
+import '../CSS/custom_nav_padding.css'
 import Cookies from 'js-cookie'
 
 export const Login = () => {
