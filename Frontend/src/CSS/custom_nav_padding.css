@@ -1,3 +1,7 @@
 .custom_nav_padding {
     padding: 0 20px;
 }
+
+.button_spacing {
+    float: right;
+}

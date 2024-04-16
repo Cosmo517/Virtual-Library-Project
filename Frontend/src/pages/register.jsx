@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api'
-import { Navbar } from "../../Components/Navbar";
+import '../CSS/custom_nav_padding.css'
+
 
 export const Register = () => {
     const [books, register] = useState([]);
@@ -33,6 +34,12 @@ export const Register = () => {
     return (
         <>
             <div className='container'>
+                <h4>
+                    <center>
+                        Create an Account
+                    </center>
+                </h4>
+
                 <form onSubmit={handleFormSubmit}>
                     <div className='mb-1 mt-3'>
                         <input type='text' className='form-control' placeholder='Username' id='username' name='username' onChange={handleInputChange} value={formData.username}/>
@@ -50,7 +57,7 @@ export const Register = () => {
                         Register
                     </button>
 
-                    <button className='btn btn-primary' onClick={() => {window.location.href='/#/login'}}>
+                    <button className='btn btn-primary button_spacing' onClick={() => {window.location.href='/#/login'}}>
                         Back to Login
                     </button>
                 </form>

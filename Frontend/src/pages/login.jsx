@@ -34,6 +34,11 @@ export const Login = () => {
     return (
         <>
             <div className='container'>
+                <h4>
+                    <center>
+                        Please enter you login information
+                    </center>
+                </h4>
                 <form onSubmit={handleFormSubmit}>
                     <div className='mb-1 mt-3'>
                         <input type='text' className='form-control' placeholder='Username' id='username' name='username'  onChange={handleInputChange} value={formData.username}/>
@@ -47,7 +52,7 @@ export const Login = () => {
                         Login
                     </button>
                 
-                    <button className='btn btn-primary' onClick={() => {window.location.href='/#/register'}}>
+                    <button className='btn btn-primary button_spacing' onClick={() => {window.location.href='/#/register'}}>
                         Register an Account
                     </button>
                 </form>

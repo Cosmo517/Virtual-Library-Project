@@ -1,10 +1,10 @@
 import { Navbar } from "../../Components/Navbar";
 
-export const Dashboard = () => {
+export const UserSettings = () => {
     return (
         <>
             <Navbar/>
-            <h1>Dashboard!</h1>
+            <h1>User Settings!!</h1>
         </>
     );
 }

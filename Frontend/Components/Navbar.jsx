@@ -33,6 +33,18 @@ export const Navbar = () => {
                             Add Books
                         </a>
                     </li>
+                    
+                    <li className="nav item active custom_nav_padding">
+                        <a className='navbar-link' href="#/RemovingBooks">
+                            Remove Books
+                        </a>
+                    </li>
+
+                    <li className="nav item active custom_nav_padding">
+                        <a className="navbar-link" href="#/UserSettings">
+                            Settings
+                        </a>
+                    </li>
 
                     <li className="nav-item active custom_nav_padding">
                         <a className='navbar-link' href='#/Login'>
