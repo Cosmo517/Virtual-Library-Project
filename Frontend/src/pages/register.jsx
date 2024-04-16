@@ -46,11 +46,11 @@ export const Register = () => {
                     </div>
 
                     <div className='mb-1'>
-                        <input type='text' className='form-control' placeholder='Password' id='password' name='password' onChange={handleInputChange} value={formData.password}/>
+                        <input type='password' className='form-control' placeholder='Password' id='password' name='password' onChange={handleInputChange} value={formData.password}/>
                     </div>
 
                     <div className='mb-1'>
-                        <input type='text' className='form-control' placeholder='Retype Password' onChange={handleInputChange} value={formData.checkpass}/>
+                        <input type='password' className='form-control' placeholder='Retype Password' onChange={handleInputChange} value={formData.checkpass}/>
                     </div>
 
                     <button type='Register' className='btn btn-primary'>
