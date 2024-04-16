@@ -2,10 +2,12 @@ from fastapi import FastAPI, HTTPException, Depends, status
 from typing import Annotated, List
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import func
 import models
 import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
+from sqlalchemy import delete
 from JWT_handler import signJWT, decodeJWT
 
 app = FastAPI()
@@ -106,13 +108,31 @@ async def read_books(db: db_dependency, skip: int = 0, limit: int = 100):
     books = db.query(models.Books).offset(skip).limit(limit).all()
     return books
 
-# TODO: Create a DELETE book function
+# @app.post('/browse/', response_model=List[BooksModel])
+# async def browse_books(db:db_dependency, skip: int = 0, limit: int = 100):
+#     books_to_browse = db.query(models.Books).filter(models.Books.published_year > models.Books.published_year).offset(skip).limit(limit).all()
+#     return books_to_browse
 
+# TODO: Create a DELETE book function
+@app.get('/Delete', status_code=status.HTTP_200_OK)
+async def delete_book(book_isbn: str, db: db_dependency):
+    book = db.query(models.Books).filter(models.Books.isbn == book_isbn)
+    if book.first() == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Book with ISBN: {book_isbn} does not exist")
+    
+    book.delete(synchronize_session=False)
+    db.commit()
+
+
+# TODO: Fun functions for libray
+# @app.get("/funfacts/", status_code=status.HTTP_201_CREATED)
+# async def all_pages(db: db_dependency):
+#     max = db.query(BooksBase, func.max(BooksBase.page_count))
+#     print(max)
+#     return max
 
 # this will add users to the database, thus should be used by the
 # frontend to create users (register accounts)
-# TODO: Check whether username is already taken
-# TODO: Make sure to hash user password before storing
 @app.post("/users/", status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserBase, db: db_dependency):
     holdUser = user.model_dump()
