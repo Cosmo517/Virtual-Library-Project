@@ -101,19 +101,47 @@ async def get_book(book_isbn: str, db: db_dependency):
         HTTPException(status_code=404, detail='Book not found') 
     return book
 
-
 # TODO: the get_book above only searched for a single book, we need one for all books
 @app.get('/books/', response_model=List[BooksModel])
 async def read_books(db: db_dependency, skip: int = 0, limit: int = 100):
     books = db.query(models.Books).offset(skip).limit(limit).all()
     return books
 
+# TODO: return sorted books
+@app.get('/books by years/', response_model=List[BooksModel])
+async def read_books_by_year(db: db_dependency, skip: int = 0, limit: int = 100):
+    books = db.query(models.Books).order_by(models.Books.published_year).order_by(models.Books.title).offset(skip).limit(limit)
+    return books
+
+@app.get('/books by title/', response_model=List[BooksModel])
+async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100):
+    books = db.query(models.Books).order_by(models.Books.title).offset(skip).limit(limit)
+    return books
+
+@app.get('/books by author/', response_model=List[BooksModel])
+async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100):
+    books = db.query(models.Books).order_by(models.Books.author).order_by(models.Books.title).offset(skip).limit(limit)
+    return books
+
+@app.get('/books by isbn/', response_model=List[BooksModel])
+async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100):
+    books = db.query(models.Books).order_by(models.Books.isbn).offset(skip).limit(limit)
+    return books
+
+@app.get('/books by publisher/', response_model=List[BooksModel])
+async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100):
+    books = db.query(models.Books).order_by(models.Books.publisher).order_by(models.Books.title).offset(skip).limit(limit)
+    return books
+
+@app.get('/books by category/', response_model=List[BooksModel])
+async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100):
+    books = db.query(models.Books).order_by(models.Books.category).order_by(models.Books.title).offset(skip).limit(limit)
+    return books
 # @app.post('/browse/', response_model=List[BooksModel])
 # async def browse_books(db:db_dependency, skip: int = 0, limit: int = 100):
 #     books_to_browse = db.query(models.Books).filter(models.Books.published_year > models.Books.published_year).offset(skip).limit(limit).all()
 #     return books_to_browse
 
-# TODO: Create a DELETE book function
 @app.get('/Delete', status_code=status.HTTP_200_OK)
 async def delete_book(book_isbn: str, db: db_dependency):
     book = db.query(models.Books).filter(models.Books.isbn == book_isbn)
