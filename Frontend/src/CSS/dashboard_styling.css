@@ -1,0 +1,38 @@
+.dashboard_long_facts {
+    outline-color: crimson;
+    outline-width: 2px;
+    outline-style: dashed;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 600px;
+}
+
+.dashboard_long_fact_1 {
+    margin-left: 20px;
+}
+
+.dashboard_long_fact_4 {
+    float: right;
+    margin-left: 150px;
+}
+
+.dashboard_short_facts {
+    outline-color: rgb(23, 20, 220);
+    outline-width: 2px;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 300px;
+    max-height: 300px;
+    outline-style: dashed;
+    margin-left: 150px;
+}
+
+
+.dashboard_short_fact_1 {
+    position: relative;
+}
+
+.container_edited {
+    width: 100%;
+    margin-left: 15px;
+}
