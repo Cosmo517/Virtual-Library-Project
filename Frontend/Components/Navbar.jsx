@@ -1,7 +1,41 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react'
 import '../src/CSS/custom_nav_padding.css'
 
 export const Navbar = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(null)  
+
+    useEffect(() => {
+        const authorize = async () => {
+            try 
+            {
+                if (Cookies.get('token') === undefined)
+                {
+                    setIsAuthenticated(false)
+                }
+                else
+                {
+                    const token = await api.post("/token/", { 'token' : Cookies.get('token') })
+                    if (token.data != null)
+                    {
+                        setIsAuthenticated(true)
+                    }
+                    else
+                    {
+                        setIsAuthenticated(false)
+                    }
+                }
+            }
+            catch (err)
+            {
+                setIsAuthenticated(false)
+            }
+
+        }
+
+        authorize()
+    }, [])
+
+
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
             <div className='container-fluid'>
@@ -28,17 +62,17 @@ export const Navbar = () => {
                         </a>
                     </li>
 
-                    <li className="nav-item active custom_nav_padding">
+                    {isAuthenticated && <li className="nav-item active custom_nav_padding">
                         <a className='navbar-link' href='#/AddingBooks'>
                             Add Books
                         </a>
-                    </li>
-                    
-                    <li className="nav item active custom_nav_padding">
+                    </li>}
+
+                    {isAuthenticated && <li className="nav item active custom_nav_padding">
                         <a className='navbar-link' href="#/RemovingBooks">
                             Remove Books
                         </a>
-                    </li>
+                    </li>}
 
                     <li className="nav item active custom_nav_padding">
                         <a className="navbar-link" href="#/UserSettings">

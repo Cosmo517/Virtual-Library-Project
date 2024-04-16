@@ -3,7 +3,7 @@ import api from "../src/api"
 import { Navigate, Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-export const PrivateRoutes = () => {
+export const AdminRoutes = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(null)  
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export const PrivateRoutes = () => {
                 else
                 {
                     const token = await api.post("/token/", { 'token' : Cookies.get('token') })
-                    if (token.data != null)
+                    if (token.data != null && token.data.administrator == 1)
                     {
                         setIsAuthenticated(true)
                     }
@@ -40,5 +40,5 @@ export const PrivateRoutes = () => {
     if (isAuthenticated === null)
         return null
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login"/>;
+    return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 }

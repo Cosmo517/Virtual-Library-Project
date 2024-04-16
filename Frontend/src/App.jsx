@@ -10,6 +10,7 @@ import { Search } from './pages/Search'
 import { PrivateRoutes } from '../Components/PrivateRoutes';
 import { RemovingBooks } from './pages/RemovingBooks';
 import { UserSettings } from './pages/UserSettings';
+import { AdminRoutes } from '../Components/AdminRoutes';
 
 
 const App = () => {
@@ -21,11 +22,14 @@ const App = () => {
 
           <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/AddingBooks" element={<AddingBooks />} />
               <Route path="/Browse" element={<Browse />} />
               <Route path="/Search" element={<Search />} />
-              <Route path='/RemovingBooks' element={<RemovingBooks />} />
               <Route path='/UserSettings' element={<UserSettings />} />
+
+              <Route element={<AdminRoutes />}>
+                <Route path="/AddingBooks" element={<AddingBooks />} />
+                <Route path='/RemovingBooks' element={<RemovingBooks />} />
+              </Route>
           </Route>
         </Routes>
     </Router>
