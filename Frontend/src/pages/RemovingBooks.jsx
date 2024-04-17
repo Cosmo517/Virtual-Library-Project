@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { Navbar } from "../../Components/Navbar";
-import { Button, Modal } from "bootstrap";
+import api from "../api";
 
 export const RemovingBooks = () => {
     const [formData, setFormData] = useState({
         isbn: ''
     })
+
+    const [response, setResponse] = useState({data: {
+        isbn: '',
+        title: '',
+        author: '',
+        publisher: '',
+        page_count: '',
+        published_year: '',
+        category: ''
+    }})
 
     const handleInputChange = (event) => {
         const value = event.target.value
@@ -15,18 +25,20 @@ export const RemovingBooks = () => {
         });
     };
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit = async (event) => {
         event.preventDefault()
-        // get api call here
+        if (formData.isbn !== '')
+        {
+            setResponse(await api.post("/single_book/", formData));
+            console.log(response)
+            
+        }
     }
 
-    const submitForm = () => {
-        // actually delete book
-        console.log('book deleted')
-        setFormData({ isbn:''})
+    const formSubmit = async () => {
+        await api.post("/delete_book", formData)
+        setFormData({ isbn: ''});
     }
-
-
 
     return (
         <>
@@ -37,7 +49,7 @@ export const RemovingBooks = () => {
                         <input type='text' className='form-control' placeholder='ISBN' id='isbn' name='isbn' onChange={handleInputChange} value={formData.isbn}/>
                     </div>
 
-                    <button type='button' className='btn btn-primary' data-toggle="modal" data-target="#confirmChoice">
+                    <button type='submit' className='btn btn-primary' data-toggle="modal" data-target="#confirmChoice">
                         Remove Book
                     </button>
                 </form>
@@ -54,12 +66,19 @@ export const RemovingBooks = () => {
                         </div>
 
                         <div className="modal-body">
-                            Are you sure you want to remove the book?
+                            Are you sure you want to remove the following book? <br/> <br/>
+                            ISBN: {response.data.isbn} <br/>
+                            Title: {response.data.title} <br/>
+                            Author: {response.data.author} <br/>
+                            Publisher: {response.data.publisher} <br/>
+                            Page Count: {response.data.page_count} <br/>
+                            Publication Date: {response.data.published_year} <br/>
+                            Category: {response.data.category}
                         </div>
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={submitForm}>Yes</button>
+                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={formSubmit}>Yes</button>
                         </div>
                     </div>
                 </div>

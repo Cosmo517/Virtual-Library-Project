@@ -38,11 +38,8 @@ class BooksBase(BaseModel):
     published_year: int
     category: str
     
-class BooksModel(BooksBase):
+class BooksModel(BaseModel):
     isbn: str
-    
-    class Config:
-        from_attributes = True
     
 class UserBase(BaseModel):
     username: str
@@ -94,12 +91,13 @@ async def create_book(book: BooksBase, db: db_dependency):
 
 # this will get a book (or multiple) from the database
 # can be used by the frontend to get books.
-@app.get("/books/{isbn}", status_code=status.HTTP_200_OK)
-async def get_book(book_isbn: str, db: db_dependency):
-    book = db.query(models.Books).filter(models.Books.isbn == book_isbn).first()
-    if book is None:
+@app.post("/single_book/", status_code=status.HTTP_200_OK)
+async def get_book(book: BooksModel, db: db_dependency):
+    print(book.isbn)
+    book_info = db.query(models.Books).filter(models.Books.isbn == book.isbn).first()
+    if book_info is None:
         HTTPException(status_code=404, detail='Book not found') 
-    return book
+    return book_info
 
 # TODO: the get_book above only searched for a single book, we need one for all books
 @app.get('/books/', response_model=List[BooksModel])
@@ -138,13 +136,13 @@ async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100
     books = db.query(models.Books).order_by(models.Books.category).order_by(models.Books.title).offset(skip).limit(limit)
     return books
 
-@app.get('/Delete', status_code=status.HTTP_200_OK)
-async def delete_book(book_isbn: str, db: db_dependency):
-    book = db.query(models.Books).filter(models.Books.isbn == book_isbn)
-    if book.first() == None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Book with ISBN: {book_isbn} does not exist")
+@app.post('/delete_book/', status_code=status.HTTP_200_OK)
+async def delete_book(book: BooksModel, db: db_dependency):
+    book_data = db.query(models.Books).filter(models.Books.isbn == book.isbn)
+    if book_data.first() == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Book with ISBN: {book.isbn} does not exist")
     
-    book.delete(synchronize_session=False)
+    book_data.delete(synchronize_session=False)
     db.commit()
 
 @app.get("/funfacts largest book/", status_code=status.HTTP_201_CREATED)
