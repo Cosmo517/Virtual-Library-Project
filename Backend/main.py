@@ -112,7 +112,7 @@ async def read_books_by_year(db: db_dependency, skip: int = 0, limit: int = 100)
 
 @app.get('/books by title/', response_model=List[BooksModel])
 async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100):
-    books = db.query(models.Books).order_by(models.Books.title).offset(skip).limit(limit)
+    books = db.query(models.Books).order_by(models.Books.title).order_by(models.Books.author).offset(skip).limit(limit)
     return books
 
 @app.get('/books by author/', response_model=List[BooksModel])
