@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends, status
 from typing import Annotated, List
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import func
+from sqlalchemy import func, select
 import models
 import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
@@ -137,10 +137,6 @@ async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100
 async def read_books_by_title(db: db_dependency, skip: int = 0, limit: int = 100):
     books = db.query(models.Books).order_by(models.Books.category).order_by(models.Books.title).offset(skip).limit(limit)
     return books
-# @app.post('/browse/', response_model=List[BooksModel])
-# async def browse_books(db:db_dependency, skip: int = 0, limit: int = 100):
-#     books_to_browse = db.query(models.Books).filter(models.Books.published_year > models.Books.published_year).offset(skip).limit(limit).all()
-#     return books_to_browse
 
 @app.get('/Delete', status_code=status.HTTP_200_OK)
 async def delete_book(book_isbn: str, db: db_dependency):
@@ -151,13 +147,23 @@ async def delete_book(book_isbn: str, db: db_dependency):
     book.delete(synchronize_session=False)
     db.commit()
 
+@app.get("/funfacts largest book/", status_code=status.HTTP_201_CREATED)
+async def most_pages(db: db_dependency):
+    max = db.query(models.Books).order_by(models.Books.page_count.desc()).first()
+    return max
 
-# TODO: Fun functions for libray
-# @app.get("/funfacts/", status_code=status.HTTP_201_CREATED)
-# async def all_pages(db: db_dependency):
-#     max = db.query(BooksBase, func.max(BooksBase.page_count))
-#     print(max)
-#     return max
+@app.get("/funfacts total amount of books/", status_code=status.HTTP_201_CREATED)
+async def total_books(db: db_dependency):
+    books = db.query(models.Books).count()
+    return books
+
+# TODO: Fun functions of total pages
+# @app.get("/funfacts total amount of pages/", status_code=status.HTTP_201_CREATED)
+# async def total_pages(db: db_dependency):
+#     pages = select([func.sum(models.Books.page_count)])
+#     return pages
+
+# TODO: Fun functions of top 5 rated books
 
 # this will add users to the database, thus should be used by the
 # frontend to create users (register accounts)
