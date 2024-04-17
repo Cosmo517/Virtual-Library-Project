@@ -29,7 +29,7 @@ export const RemovingBooks = () => {
         event.preventDefault()
         if (formData.isbn !== '')
         {
-            formData.isbn = formData.isbn.replace(/[^0-9]/g, "")    
+            formData.isbn = formData.isbn.replace(/[^0-9]/g, "")
             setResponse(await api.post("/single_book/", formData));
         }
     }
