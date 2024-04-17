@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { Dashboard } from './pages/dashboard';
+import { Dashboard } from './pages/Dashboard';
 import { AddingBooks } from './pages/AddingBooks'
-import { Browse } from './pages/browse';
-import { Login } from './pages/login';
-import { Register } from './pages/register';
-import { Search } from './pages/search'
+import { Browse } from './pages/Browse';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { Search } from './pages/Search'
 import { PrivateRoutes } from '../Components/PrivateRoutes';
 import { RemovingBooks } from './pages/RemovingBooks';
 import { UserSettings } from './pages/UserSettings';

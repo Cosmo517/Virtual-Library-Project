@@ -13,7 +13,7 @@
 
 .dashboard_long_fact_4 {
     float: right;
-    margin-left: 150px;
+    margin-left: 130px;
 }
 
 .dashboard_short_facts {
@@ -24,7 +24,7 @@
     min-height: 300px;
     max-height: 300px;
     outline-style: dashed;
-    margin-left: 150px;
+    margin-left: 130px;
 }
 
 
@@ -33,6 +33,6 @@
 }
 
 .container_edited {
-    width: 100%;
-    margin-left: 15px;
+    width: 95%;
+    margin-left: 30px;
 }
