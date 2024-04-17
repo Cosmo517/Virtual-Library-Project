@@ -1,10 +1,10 @@
 import { Navbar } from "../../Components/Navbar";
 
-export const Browse = () => {
+export const Search = () => {
     return (
         <>
             <Navbar/>
-            <h1>Browsing!!!!!</h1>
+            <h1>Searching!!!!!</h1>
         </>
     );
 }
