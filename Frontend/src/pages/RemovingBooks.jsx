@@ -30,13 +30,20 @@ export const RemovingBooks = () => {
         if (formData.isbn !== '')
         {
             setResponse(await api.post("/single_book/", formData));
-            console.log(response)
-            
         }
     }
 
     const formSubmit = async () => {
-        await api.post("/delete_book", formData)
+        setResponse({data: {
+            isbn: '',
+            title: '',
+            author: '',
+            publisher: '',
+            page_count: '',
+            published_year: '',
+            category: ''
+        }})
+        await api.post("/delete_book/", formData)
         setFormData({ isbn: ''});
     }
 
@@ -55,6 +62,7 @@ export const RemovingBooks = () => {
                 </form>
             </div>
 
+            { (response.data !== null && response.data.isbn !== '') &&
             <div className="modal" id='confirmChoice' tabIndex={-1} role="diaglog" aria-labelledby="exampleModal" aria-hidden='true'>
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -82,7 +90,7 @@ export const RemovingBooks = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </>
     );
 }

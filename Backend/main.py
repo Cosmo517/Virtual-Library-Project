@@ -93,7 +93,6 @@ async def create_book(book: BooksBase, db: db_dependency):
 # can be used by the frontend to get books.
 @app.post("/single_book/", status_code=status.HTTP_200_OK)
 async def get_book(book: BooksModel, db: db_dependency):
-    print(book.isbn)
     book_info = db.query(models.Books).filter(models.Books.isbn == book.isbn).first()
     if book_info is None:
         HTTPException(status_code=404, detail='Book not found') 
