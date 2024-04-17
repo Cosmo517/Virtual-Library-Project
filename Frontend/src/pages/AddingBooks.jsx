@@ -24,6 +24,7 @@ export const AddingBooks = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        formData.isbn = formData.isbn.replace(/[^0-9]/g, "")
         formData.page_count = parseInt(formData.page_count);
         formData.publish_year = parseInt(formData.publish_year);
         await api.post('/books/', formData)
