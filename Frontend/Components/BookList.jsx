@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Book } from "./Book";
-import api from "../src/api";
 import '../src/CSS/browse.css'
 
-export const BookList = () => {
-    const [books, setBooks] = useState([])
-
-    useEffect(() => {
-        const grab_books = async () => {
-            const booksResponse = await api.get("/books/")
-            if (booksResponse.data !== undefined)
-            {
-                setBooks(Array.from(booksResponse.data))
-            }
-        }
-
-        grab_books()
-    }, [])
+export const BookList = ({ bookList }) => {
+    const books = bookList
 
     return (
         <div className="book-list">

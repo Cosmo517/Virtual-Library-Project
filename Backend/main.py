@@ -58,6 +58,10 @@ class LoginRequest(BaseModel):
     
 class JWT_token(BaseModel):
     token: str
+    
+class SearchRequest(BaseModel):
+    search: str
+    searchType: str
 
 def get_db():
     db = SessionLocal()
@@ -109,6 +113,23 @@ async def get_book(book: BooksModel, db: db_dependency):
 async def read_books(db: db_dependency, skip: int = 0, limit: int = 100):
     books = db.query(models.Books).order_by(models.Books.title).offset(skip).limit(limit).all()
     return books
+
+# Manually filtered books from the users search
+@app.post('/filter/', status_code=status.HTTP_200_OK)
+async def filter_books(filter: SearchRequest, db: db_dependency):
+    search_info = filter.model_dump()
+    searchType = search_info['searchType']
+    filtered_books = {}
+    if searchType == 'ISBN':
+        filtered_books = db.query(models.Books).filter(models.Books.isbn.like("%" + search_info['search'] + "%")).all()
+    elif searchType == 'Title':
+        filtered_books = db.query(models.Books).filter(models.Books.title.like("%" + search_info['search'] + "%")).all()
+    elif searchType == 'Author':
+        filtered_books = db.query(models.Books).filter(models.Books.author.like("%" + search_info['search'] + "%")).all()
+    elif searchType == 'Genre':
+        filtered_books = db.query(models.Books).filter(models.Books.category.like("%" + search_info['search'] + "%")).all()
+    return filtered_books
+
 
 # TODO: return sorted books
 @app.get('/books by years/', response_model=List[BooksModel])
