@@ -4,12 +4,11 @@ import '../CSS/custom_nav_padding.css'
 
 
 export const Register = () => {
-    const [books, register] = useState([]);
-
-    // this will be a "form" for books
+    // this will be a "form" for users
     const [formData, setFormData] = useState({
         username: '',
         password: '',
+        checkpass: '',
         administrator: 0
     });
 
@@ -23,12 +22,16 @@ export const Register = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        await api.post('/users/', formData)
-        setFormData({
-            username: '',
-            password: '',
-            administrator: 0
-        });
+        if (formData.username !== '' && formData.password.length >= 10)
+        {
+            await api.post('/users/', formData)
+            setFormData({
+                username: '',
+                password: '',
+                checkpass: '',
+                administrator: 0
+            });
+        }
     };
 
     return (
@@ -50,10 +53,10 @@ export const Register = () => {
                     </div>
 
                     <div className='mb-1'>
-                        <input type='password' className='form-control' placeholder='Retype Password' onChange={handleInputChange} value={formData.checkpass}/>
+                        <input type='password' className='form-control' placeholder='Retype Password' id='checkpass' name='checkpass' onChange={handleInputChange} value={formData.checkpass}/>
                     </div>
 
-                    <button type='Register' className='btn btn-primary'>
+                    <button type='submit' className='btn btn-primary'>
                         Register
                     </button>
 

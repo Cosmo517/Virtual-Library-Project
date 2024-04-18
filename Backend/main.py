@@ -45,6 +45,12 @@ class UserBase(BaseModel):
     username: str
     password: str
     administrator: int
+    
+class UserRegistrationBase(BaseModel):
+    username: str
+    password: str
+    checkpass: str
+    administrator: int
 
 class LoginRequest(BaseModel):
     username: str
@@ -165,8 +171,9 @@ async def total_books(db: db_dependency):
 # this will add users to the database, thus should be used by the
 # frontend to create users (register accounts)
 @app.post("/users/", status_code=status.HTTP_201_CREATED)
-async def create_user(user: UserBase, db: db_dependency):
+async def create_user(user: UserRegistrationBase, db: db_dependency):
     holdUser = user.model_dump()
+    del holdUser['checkpass']
     username = db.query(models.User).filter(models.User.username == holdUser["username"]).first()
     if username:
         raise HTTPException(status_code=409, detail='User already exists')
