@@ -5,7 +5,7 @@ export const Dashboard = () => {
     return (
         <>
             <Navbar/>
-            <div className="container_edited">
+            <div className="container_edited mt-2">
                 <div className="row">
                     <div className="dashboard_long_facts dashboard_long_fact_1">
                         <h1>Fact 1!</h1>
