@@ -11,10 +11,14 @@
 }
 
 .text_resize {
-    width: 90%;
+    width: 82.5%;
     margin-left: 15px;
 }
 
+.row_resize {
+    margin-left: 1px;
+}
+
 .search_button {
-    margin-left: 10px;
+    margin-left: 15px;
 }

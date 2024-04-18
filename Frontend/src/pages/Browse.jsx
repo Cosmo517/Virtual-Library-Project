@@ -25,7 +25,14 @@ export const Browse = () => {
 
             <div className="container mt-4 mb-4">
                 <form onSubmit={handleFormSubmit}>
-                    <div className="row mb-3">
+                    <div className="row mb-3 row_resize">
+                        <select className="form-select" aria-label="Default select example">
+                            <option value='ISBN'>ISBN</option>
+                            <option value='Title'>Title</option>
+                            <option value='Author'>Author</option>
+                            <option value='Genre'>Genre</option>
+                        </select>
+
                         <input type='text' className='form-control text_resize' placeholder='Search' id='username' name='username'  onChange={handleInputChange} value={formData.username}/>
                         
                         <button type='submit' className='btn btn-primary search_button'>
@@ -33,6 +40,7 @@ export const Browse = () => {
                         </button>
                     </div>
                 </form>
+                
                 <BookList/>
             </div>
         </>

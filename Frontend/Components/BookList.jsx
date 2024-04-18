@@ -12,7 +12,6 @@ export const BookList = () => {
             if (booksResponse.data !== undefined)
             {
                 setBooks(Array.from(booksResponse.data))
-                console.log(booksResponse)
             }
         }
 
