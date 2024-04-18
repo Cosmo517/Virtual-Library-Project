@@ -101,7 +101,7 @@ async def get_book(book: BooksModel, db: db_dependency):
 # TODO: the get_book above only searched for a single book, we need one for all books
 @app.get('/books/', response_model=List[BooksBase])
 async def read_books(db: db_dependency, skip: int = 0, limit: int = 100):
-    books = db.query(models.Books).offset(skip).limit(limit).all()
+    books = db.query(models.Books).order_by(models.Books.title).offset(skip).limit(limit).all()
     return books
 
 # TODO: return sorted books
