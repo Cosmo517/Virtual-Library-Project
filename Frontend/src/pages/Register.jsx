@@ -22,7 +22,7 @@ export const Register = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        if (formData.username !== '' && formData.password.length >= 10)
+        if (formData.username !== '' && formData.password.length >= 10 && formData.password == formData.checkpass)
         {
             await api.post('/users/', formData)
             setFormData({
