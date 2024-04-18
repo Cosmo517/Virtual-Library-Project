@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 import api from "../src/api"
 import { Navigate, Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Navbar } from './Navbar';
 
 export const AdminRoutes = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(null)  
@@ -40,5 +41,10 @@ export const AdminRoutes = () => {
     if (isAuthenticated === null)
         return null
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
+    return (
+        <>
+            <NavBar isAuthenticated={isAuthenticated} />
+            {isAuthenticated ? <Outlet /> : <Navigate to="/" />}
+        </>
+    );
 }

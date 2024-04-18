@@ -1,6 +1,10 @@
+import React from 'react';
+
 import '../src/CSS/custom_nav_padding.css'
 
-export const Navbar = () => {
+export const Navbar = () => ({isAuthenticated}) => {
+    const isAdmin = isAuthenticated;
+
     return (
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
             <div className='container-fluid'>
