@@ -18,7 +18,7 @@ export const Dashboard = () => {
             // const response3 = await fetch ('/funfacts total amount of pages/');
             // const response4 = await fetch ('/funfacts top rated books/');
 
-            if (!response1.ok || !response2.ok ) //|| !response3.ok || !response4.ok || ) {
+            if (!response1.ok || !response2.ok ) { //|| !response3.ok || !response4.ok || ) {
                 throw new Error('Failed to fetch fun facts');
             }
 
