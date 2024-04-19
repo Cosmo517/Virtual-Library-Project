@@ -1,7 +1,59 @@
-.custom_nav_padding {
-    padding: 0 20px;
+/* Navbar */
+.navbar {
+    background-color: #151b46; /* Dark Blue */
+    border-bottom: 3px solid #606060; /* Dark Gray */
+    width: 100%;
 }
 
-.button_spacing {
-    float: right;
+.navbar-brand {
+    text-align: center;
+    align-self: center;
+    height: 60px;
+    font-size: 2.45rem;
+    font-family: 'Exo', sans-serif; /* Exo font */
+    color: #ffffff; /* White */
+}
+
+.navbar-nav {
+    font-family: 'PT Sans Narrow', sans-serif; /* PT Sans Narrow font */
+    font-size: 1.45rem;
+    margin: 0;
+}
+
+.nav-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navbar-link {
+    color: #ffffff; /* White */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #8fffff; /* Light Blue */
+}
+
+.dropdown-menu {
+    background: #00000080; /* Transparent Black */
+    border: solid 1px #95ffae; /* Light Green */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.dropdown-menu a {
+    font-size: 1.25rem;
+    padding-left: 10px !important;
+    padding-right: 5px !important;
+    color: #ffffff; /* White */
+}
+
+.dropdown-menu a:hover {
+    color: #ffffff; /* White */
+    background-color: #1d2875; /* Dark Blue */
+}
+
+.navbar-nav:hover {
+    background-color: #2c4ed7; /* Darker Blue */
 }

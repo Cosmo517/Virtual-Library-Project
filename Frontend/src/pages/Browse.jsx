@@ -2,6 +2,8 @@ import { Navbar } from "../../Components/Navbar";
 import { BookList } from "../../Components/BookList";
 import { useState, useEffect } from "react";
 import api from "../api";
+import '../CSS/browse.css'
+
 
 export const Browse = () => {
     const [books, setBooks] = useState([])
@@ -46,15 +48,15 @@ export const Browse = () => {
                     <input type="radio" id='test' name="test" value='test'/>
                 </div>
 
-                <div className="books-container mt-4 mb-4">
-                    <form onSubmit={handleFormSubmit}>
-                        <div className="row mb-3 row_resize">
-                            <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
-                                <option value='ISBN'>ISBN</option>
-                                <option value='Title'>Title</option>
-                                <option value='Author'>Author</option>
-                                <option value='Genre'>Genre</option>
-                            </select>
+            <div className="mt-4 mb-4" style={{ marginTop: '150px' }}>
+                <form onSubmit={handleFormSubmit} style={{ marginTop: '150px', marginLeft: '25px' }}>
+                    <div className="row mb-3 row_resize">
+                        <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
+                            <option value='ISBN'>ISBN</option>
+                            <option value='Title'>Title</option>
+                            <option value='Author'>Author</option>
+                            <option value='Genre'>Genre</option>
+                        </select>
 
                             <input type='text' className='form-control text_resize' placeholder='Search' id='search-bar' name='search'  onChange={handleInputChange} value={formData.search}/>
                             
