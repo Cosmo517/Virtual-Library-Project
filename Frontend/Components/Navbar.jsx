@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../src/CSS/custom_nav_padding.css'
 
-export const Navbar = () => ({isAuthenticated}) => {
+export const Navbar = ({isAuthenticated}) => {
     const isAdmin = isAuthenticated;
 
     return (
@@ -31,17 +31,21 @@ export const Navbar = () => ({isAuthenticated}) => {
                         </a>
                     </li>
 
-                    <li className="nav-item active custom_nav_padding">
-                        <a className='navbar-link' href='#/AddingBooks'>
-                            Add Books
-                        </a>
-                    </li>
+                    {isAdmin && (
+                        <>
+                            <li className="nav-item active custom_nav_padding">
+                                <a className='navbar-link' href='#/AddingBooks'>
+                                    Add Books
+                                </a>
+                            </li>
 
-                    <li className="nav item active custom_nav_padding">
-                        <a className='navbar-link' href="#/RemovingBooks">
-                            Remove Books
-                        </a>
-                    </li>
+                            <li className="nav item active custom_nav_padding">
+                                <a className='navbar-link' href="#/RemovingBooks">
+                                    Remove Books
+                                </a>
+                            </li>
+                        </>
+                    )}
 
                     <li className="nav item active custom_nav_padding">
                         <a className="navbar-link" href="#/UserSettings">
