@@ -40,26 +40,32 @@ export const Browse = () => {
     return (
         <>
             <Navbar/>
+            <div className="row-resize">
+                <div className="filter-container">
+                    <h5 className="center-text">Filters</h5>
+                    <input type="radio" id='test' name="test" value='test'/>
+                </div>
 
-            <div className="container mt-4 mb-4">
-                <form onSubmit={handleFormSubmit}>
-                    <div className="row mb-3 row_resize">
-                        <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
-                            <option value='ISBN'>ISBN</option>
-                            <option value='Title'>Title</option>
-                            <option value='Author'>Author</option>
-                            <option value='Genre'>Genre</option>
-                        </select>
+                <div className="books-container mt-4 mb-4">
+                    <form onSubmit={handleFormSubmit}>
+                        <div className="row mb-3 row_resize">
+                            <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
+                                <option value='ISBN'>ISBN</option>
+                                <option value='Title'>Title</option>
+                                <option value='Author'>Author</option>
+                                <option value='Genre'>Genre</option>
+                            </select>
 
-                        <input type='text' className='form-control text_resize' placeholder='Search' id='search-bar' name='search'  onChange={handleInputChange} value={formData.search}/>
-                        
-                        <button type='submit' className='btn btn-primary search_button'>
-                            Search
-                        </button>
-                    </div>
-                </form>
-                
-                <BookList bookList={books}/>
+                            <input type='text' className='form-control text_resize' placeholder='Search' id='search-bar' name='search'  onChange={handleInputChange} value={formData.search}/>
+                            
+                            <button type='submit' className='btn btn-primary search_button'>
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <BookList bookList={books}/>
+                </div>
             </div>
         </>
     );
