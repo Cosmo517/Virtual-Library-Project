@@ -2,6 +2,8 @@ import { Navbar } from "../../Components/Navbar";
 import { BookList } from "../../Components/BookList";
 import { useState, useEffect } from "react";
 import api from "../api";
+import '../CSS/browse.css'
+
 
 export const Browse = () => {
     const [books, setBooks] = useState([])
@@ -41,8 +43,8 @@ export const Browse = () => {
         <>
             <Navbar/>
 
-            <div className="container mt-4 mb-4">
-                <form onSubmit={handleFormSubmit}>
+            <div className="mt-4 mb-4" style={{ marginTop: '150px' }}>
+                <form onSubmit={handleFormSubmit} style={{ marginTop: '150px', marginLeft: '25px' }}>
                     <div className="row mb-3 row_resize">
                         <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
                             <option value='ISBN'>ISBN</option>

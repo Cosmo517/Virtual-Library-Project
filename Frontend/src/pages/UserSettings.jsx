@@ -1,5 +1,6 @@
 import { Navbar } from "../../Components/Navbar";
 import Cookies from "js-cookie";
+import '../CSS/usersettings.css'
 
 export const UserSettings = () => {
 

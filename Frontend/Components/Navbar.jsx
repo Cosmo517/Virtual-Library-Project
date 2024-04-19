@@ -1,71 +1,79 @@
 import React from 'react';
 
-import '../src/CSS/custom_nav_padding.css'
+import '../src/CSS/custom_nav_padding.css';
 
-export const Navbar = ({isAuthenticated}) => {
+export const Navbar = ({ isAuthenticated }) => {
     const isAdmin = isAuthenticated;
 
     return (
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-            <div className='container-fluid'>
+        <header>
+            <nav className='navbar navbar-expand-lg navbar-dark fixed-top'>
                 <a className="navbar-brand" href="#">
                     Virtual Library
                 </a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
 
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active custom_nav_padding">
-                        <a className='navbar-link' href='#'>
-                            Dashboard
-                        </a>
-                    </li>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active">
+                            <a className='nav-link' href='#'>
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active">
+                            <a className='nav-link' href='#/Browse'>
+                                Browse
+                            </a>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active">
+                            <a className='nav-link' href='#/Search'>
+                                Search
+                            </a>
+                        </li>
+                    </ul>
 
-                    <li className="nav-item active custom_nav_padding">
-                        <a className='navbar-link' href='#/Browse'>
-                            Browse
-                        </a>
-                    </li>
-
-                    <li className="nav-item active custom_nav_padding">
-                        <a className='navbar-link' href='#/Search'>
-                            Search
-                        </a>
-                    </li>
-
-                    {isAdmin && (
-                        <>
-                            <li className="nav-item active custom_nav_padding">
-                                <a className='navbar-link' href='#/AddingBooks'>
-                                    Add Books
-                                </a>
-                            </li>
-
-                            <li className="nav item active custom_nav_padding">
-                                <a className='navbar-link' href="#/RemovingBooks">
-                                    Remove Books
-                                </a>
-                            </li>
-                        </>
-                    )}
-
-                    <li className="nav item active custom_nav_padding">
-                        <a className="navbar-link" href="#/UserSettings">
-                            Settings
-                        </a>
-                    </li>
-
-                    <li className="nav-item active custom_nav_padding">
-                        <a className='navbar-link' href='#/Login'>
-                            Login
-                        </a>
-                    </li>
-
-                    <li className="nav-item active custom_nav_padding">
-                        <a className='navbar-link' href='#/Register'>
-                            Register
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                        {isAdmin && (
+                            <>
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item active">
+                                    <a className='nav-link' href='#/AddingBooks'>
+                                        Add Books
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item active">
+                                    <a className='nav-link' href="#/RemovingBooks">
+                                        Remove Books
+                                    </a>
+                                </li>
+                            </ul>
+                            </>
+                        )}
+                    
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                More
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a className="dropdown-item" href="#/UserSettings">Settings</a>
+                                <div className="dropdown-divider"></div>
+                                <a className="dropdown-item" href="#/Login">Login</a>
+                                <a className="dropdown-item" href="#/Register">Register</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     );
-}
+};

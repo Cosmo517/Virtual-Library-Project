@@ -1,39 +1,44 @@
 /* Fact boxes */
-.dashboard_long_facts {
-    border: 2px dashed crimson; /* Changed from outline to border */
+.dashboard_long_facts,
+.dashboard_short_facts {
+    border: 2px solid #606060; /* Gray */
     width: 400px;
-    height: 600px;
-    margin-bottom: 20px; /* Added margin-bottom for spacing */
+    height: auto; /* Adjusted height to fit content */
+    margin-bottom: 20px;
+    margin-top: 150px; /* Added margin from the top */
 }
 
-.dashboard_long_fact_1 {
-    margin-left: 20px;
-}
-
-.dashboard_long_fact_4 {
-    float: right;
-    margin-left: 130px;
+.dashboard_long_facts {
+    margin-left: 25px;
 }
 
 .dashboard_short_facts {
-    border: 2px dashed rgb(23, 20, 220); /* Changed from outline to border */
-    width: 400px;
-    height: 300px;
-    margin-left: 130px;
-    margin-bottom: 20px; /* Added margin-bottom for spacing */
+    margin-left: 100px;
 }
 
-.dashboard_short_fact_1 {
-    position: relative;
+/* Fact title */
+.dashboard_long_facts h1,
+.dashboard_short_facts h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000000; /* Black */
 }
 
-.container_edited {
-    width: 95%;
-    margin-left: 30px;
+/* Fact content */
+.dashboard_long_facts h2,
+.dashboard_short_facts h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #000000; /* Black */
 }
 
-/* Added specific classes for each fact box */
-.dashboard_long_facts_1,
-.dashboard_short_facts_2,
-.dashboard_short_facts_3,
-.dashboard_long_facts_4 
+.dashboard_long_facts p,
+.dashboard_short_facts p {
+    font-size: 16px;
+    color: #606060; /* Gray */
+    line-height: 1.5;
+}
+
+.dashboard_long_fact_4 {
+    margin-left: 100px; /* Increase margin to the left */
+}
