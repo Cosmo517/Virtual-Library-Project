@@ -40,7 +40,7 @@ export const Dashboard = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <div className="container_edited mt-5"> {/* Added mt-5 to give a margin from the top */}
                 <div className='row justify-content-center'> {/* Center the content horizontally */}
                     {/* Fact 1 */}

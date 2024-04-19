@@ -48,14 +48,14 @@ export const Browse = () => {
                     <input type="radio" id='test' name="test" value='test'/>
                 </div>
 
-            <div className="mt-4 mb-4"  style={{ marginTop: '150px' }}>
+            <div className="books-container mt-4 mb-4"  style={{ marginTop: '150px' }}>
                 <form onSubmit={handleFormSubmit} style={{ marginTop: '150px', marginLeft: '25px' }}>
                     <div className="row mb-3 row_resize">
                         <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
-                            <option value='ISBN'>ISBN</option>
                             <option value='Title'>Title</option>
                             <option value='Author'>Author</option>
                             <option value='Genre'>Genre</option>
+                            <option value='ISBN'>ISBN</option>
                         </select>
 
                             <input type='text' className='form-control text_resize' placeholder='Search' id='search-bar' name='search'  onChange={handleInputChange} value={formData.search}/>
