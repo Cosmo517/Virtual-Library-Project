@@ -41,6 +41,10 @@ export const Dashboard = () => {
     return (
         <>
             <Navbar/>
+            <div className="hero">
+                    <h1>Virtual Library</h1>
+                    <h2>Web Portal for the Home Library</h2>
+                </div>
             <div className="container_edited mt-5"> {/* Added mt-5 to give a margin from the top */}
                 <div className='row justify-content-center'> {/* Center the content horizontally */}
                     {/* Fact 1 */}
@@ -53,7 +57,6 @@ export const Dashboard = () => {
                             </div>
                         )}
                     </div>
-    
                     {/* Fact 2 */}
                     <div className='column'>
                         <div className="dashboard_short_facts">
