@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navbar } from "../../Components/Navbar";
 import api from "../api";
 
-export const RemovingBooks = () => {
+export const RemovingBooks = ({ isAuthenticated }) => {
     const [formData, setFormData] = useState({
         isbn: ''
     })
@@ -50,21 +50,39 @@ export const RemovingBooks = () => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar isAuthenticated={isAuthenticated} />
             <div className="container">
                 <form onSubmit={handleFormSubmit}>
                     <div className="mt-1 mb-3">
-                        <input type='text' className='form-control' placeholder='ISBN' id='isbn' name='isbn' onChange={handleInputChange} value={formData.isbn}/>
+                        <input 
+                        type='text' 
+                        className='form-control' 
+                        placeholder='ISBN' 
+                        id='isbn' name='isbn' 
+                        onChange={handleInputChange} 
+                        value={formData.isbn}/>
                     </div>
 
-                    <button type='submit' className='btn btn-primary' data-toggle="modal" data-target="#confirmChoice">
+                    <button 
+                        type='submit' 
+                        className='btn btn-primary' 
+                        data-toggle="modal" 
+                        data-target="#confirmChoice"
+                    >
                         Remove Book
                     </button>
                 </form>
             </div>
 
             { (response.data !== null && response.data.isbn !== '') &&
-            <div className="modal" id='confirmChoice' tabIndex={-1} role="diaglog" aria-labelledby="exampleModal" aria-hidden='true'>
+            <div 
+                className="modal" 
+                id='confirmChoice' 
+                tabIndex={-1} 
+                role="diaglog" 
+                aria-labelledby="exampleModal" 
+                aria-hidden='true'
+            >
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">

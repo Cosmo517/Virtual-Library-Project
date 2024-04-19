@@ -28,7 +28,7 @@ export const Dashboard = () => {
             // const data4 = await response4.json();
 
             setFunFacts([
-                {title: 'Largest Book:', fact: 'Title: ${data1.title}, Pages: ${data1.page_count}' },
+                {title: 'Largest Book:', fact: `Title: ${data1.title}, Pages: ${data1.page_count}` },
                 {title: 'Total Books:', fact: data2.toString() },
                 // {title: 'Total Pages:', fact: data3.totalPages.toSTring() },
                 // {title: 'Top 5 Rated Books:', fact: JSON.stringify(data4.books) }

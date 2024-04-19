@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import api from '../api'
 import { Navbar } from '../../Components/Navbar';
 
-export const AddingBooks = () => {
+export const AddingBooks = ({ isAuthenticated}) => {
     // this will be a "form" for books
     const [formData, setFormData] = useState({
         isbn: '',
@@ -41,7 +41,7 @@ export const AddingBooks = () => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar isAuthenticated={isAuthenticated }/>
             <div className='container'>
                 <form onSubmit={handleFormSubmit}>
                     <div className='mb-1 mt-3'>

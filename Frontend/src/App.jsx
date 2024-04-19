@@ -13,6 +13,8 @@ import { AdminRoutes } from '../Components/AdminRoutes';
 
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
   return (
     <Router>
       <Routes>
@@ -24,7 +26,7 @@ const App = () => {
               <Route path="/Browse" element={<Browse />} />
               <Route path='/UserSettings' element={<UserSettings />} />
 
-              <Route element={<AdminRoutes />}>
+              <Route element={<AdminRoutes isAuthenticated={isAuthenticated} />}>
                 <Route path="/AddingBooks" element={<AddingBooks />} />
                 <Route path='/RemovingBooks' element={<RemovingBooks />} />
               </Route>
