@@ -6,7 +6,6 @@ import { AddingBooks } from './pages/AddingBooks'
 import { Browse } from './pages/Browse';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
-import { Search } from './pages/Search'
 import { PrivateRoutes } from '../Components/PrivateRoutes';
 import { RemovingBooks } from './pages/RemovingBooks';
 import { UserSettings } from './pages/UserSettings';
@@ -23,7 +22,6 @@ const App = () => {
           <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
               <Route path="/Browse" element={<Browse />} />
-              <Route path="/Search" element={<Search />} />
               <Route path='/UserSettings' element={<UserSettings />} />
 
               <Route element={<AdminRoutes />}>

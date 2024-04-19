@@ -48,7 +48,7 @@ export const Browse = () => {
                     <input type="radio" id='test' name="test" value='test'/>
                 </div>
 
-            <div className="mt-4 mb-4" style={{ marginTop: '150px' }}>
+            <div className="mt-4 mb-4"  style={{ marginTop: '150px' }}>
                 <form onSubmit={handleFormSubmit} style={{ marginTop: '150px', marginLeft: '25px' }}>
                     <div className="row mb-3 row_resize">
                         <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
