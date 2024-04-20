@@ -51,7 +51,7 @@ export const RemovingBooks = ({ isAuthenticated }) => {
     return (
         <>
             <Navbar isAuthenticated={isAuthenticated} />
-            <div className="container">
+            <div className="container" style={ { marginTop: "100px"} }>
                 <form onSubmit={handleFormSubmit}>
                     <div className="mt-1 mb-3">
                         <input 

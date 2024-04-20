@@ -6,6 +6,41 @@ import '../CSS/browse.css'
 
 
 export const Browse = () => {
+
+    
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    const checkUserRole = async () =>
+    {
+        try 
+        {
+            if (Cookies.get('token') === undefined)
+            {
+                setIsAdmin(false)
+            }
+            else
+            {
+                const token = await api.post("/token/", { 'token' : Cookies.get('token') })
+                if (token.data != null && token.data.administrator == 1)
+                {
+                    setIsAdmin(true)
+                }
+                else
+                {
+                    setIsAdmin(false)
+                }
+            }
+        }
+        catch (err)
+        {
+            setIsAdmin(false)
+        }
+    }
+
+    useEffect(() => {
+        checkUserRole();
+    }, []);
+    
     const [books, setBooks] = useState([])
 
     const [formData, setFormData] = useState({

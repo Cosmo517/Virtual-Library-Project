@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
 import '../CSS/custom_nav_padding.css';
 
 export const Navbar = () => {
-    const isAdmin = false;
 
     return (
         <header>
@@ -32,8 +30,6 @@ export const Navbar = () => {
                         </li>
                     </ul>
 
-                        {isAdmin && (
-                            <>
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active">
                                     <a className='nav-link' href='#/AddingBooks'>
@@ -48,8 +44,6 @@ export const Navbar = () => {
                                     </a>
                                 </li>
                             </ul>
-                            </>
-                        )}
                     
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item active dropdown">
