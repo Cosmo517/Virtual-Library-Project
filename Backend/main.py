@@ -66,7 +66,12 @@ class SearchRequest(BaseModel):
     ZA: bool
     yearBefore: int
     yearAfter: int
-    
+
+class ChangePasswordRequest(BaseModel):
+    oldPassword: str
+    newPassword: str
+    checkNewPass: str
+    token: str
 
 def get_db():
     db = SessionLocal()
@@ -250,17 +255,31 @@ async def read_user(user: str, db: db_dependency):
 # constiting of their current password, and their new password twice
 #  then checks and either changes the password or gives error
 @app.post("/passwords/", status_code=status.HTTP_201_CREATED)
-async def change_password(currentpassword:str, newpassword:str, passwordcheck:str, user:str, db: db_dependency):
-    username = db.query(models.User).filter(models.User.username == user).first()
-    if username and isPasswordCorrect(username.password,currentpassword):
-        newpassword = stringToHash(newpassword)
-        if isPasswordCorrect(newpassword,passwordcheck):
-            username.password = newpassword
+async def change_password(request: ChangePasswordRequest, db: db_dependency):
+    request_info = request.model_dump()
+    del request_info['checkNewPass']
+    
+    print(request_info)
+    
+    old_password = request_info['oldPassword']
+    new_password = request_info['newPassword']
+    
+    token_info = decodeJWT(request_info['token'])
+    print(token_info)
+    if token_info:
+        user = token_info['username']
+        
+        username = db.query(models.User).filter(models.User.username == user).first()
+        if username and isPasswordCorrect(username.password, old_password):
+            new_pass = stringToHash(new_password)
+            username.password = new_pass
             db.commit()
+            return {'response': 'Accepted'}
         else:
-            raise HTTPException(status_code=401, detail='Invalid Password')
+            return {'response': 'Invalid Password'}
+        
     else:
-        raise HTTPException(status_code=401, detail='Invalid Username or Password')
+        return {'response': 'Expired'}
 
 # This filter out the user from the database and takes and input for a password from the user
 # It then check if the user is in table and if the inputted password is correct
@@ -277,5 +296,4 @@ async def login(login: LoginRequest, db: db_dependency):
 @app.post("/token/")
 async def validate_jwt(token: JWT_token, db: db_dependency):
     data = decodeJWT(token.token)
-    print(data)
     return data
