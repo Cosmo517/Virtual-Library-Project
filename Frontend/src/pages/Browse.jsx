@@ -82,7 +82,7 @@ export const Browse = () => {
                         <label>and</label>
                         <input style={{ marginLeft: '5px', width: '80px'}} id='yearAfter' type="number"/>
                     </div>
-                    <button className="btn btn-primary mr-2 mt-2" style={{ float: 'right'}} onClick={handleFilter}>Apply</button>
+                    <button className="btn btn-primary mr-2 mt-3" style={{ float: 'right'}} onClick={handleFilter}>Apply</button>
                 </div>
 
             <div className="books-container mt-4 mb-4">
