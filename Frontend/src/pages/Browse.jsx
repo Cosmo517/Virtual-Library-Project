@@ -1,5 +1,5 @@
-import { Navbar } from "../../Components/Navbar";
-import { BookList } from "../../Components/BookList";
+import { Navbar } from "../Components/Navbar";
+import { BookList } from "../Components/BookList";
 import { useState, useEffect } from "react";
 import api from "../api";
 import '../CSS/browse.css'

@@ -1,5 +1,5 @@
 import React from "react";
-import '../src/CSS/browse.css'
+import '../CSS/browse.css'
 
 export const Book = ({ isbn, title, author, publisher, pageCount, publishYear, category}) => {
     return (

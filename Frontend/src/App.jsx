@@ -6,15 +6,13 @@ import { AddingBooks } from './pages/AddingBooks'
 import { Browse } from './pages/Browse';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
-import { PrivateRoutes } from '../Components/PrivateRoutes';
+import { PrivateRoutes } from './Components/PrivateRoutes';
 import { RemovingBooks } from './pages/RemovingBooks';
 import { UserSettings } from './pages/UserSettings';
-import { AdminRoutes } from '../Components/AdminRoutes';
+import { AdminRoutes } from './Components/AdminRoutes';
 
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
   return (
     <Router>
       <Routes>
@@ -26,7 +24,7 @@ const App = () => {
               <Route path="/Browse" element={<Browse />} />
               <Route path='/UserSettings' element={<UserSettings />} />
 
-              <Route element={<AdminRoutes isAuthenticated={isAuthenticated} />}>
+              <Route element={<AdminRoutes />}>
                 <Route path="/AddingBooks" element={<AddingBooks />} />
                 <Route path='/RemovingBooks' element={<RemovingBooks />} />
               </Route>

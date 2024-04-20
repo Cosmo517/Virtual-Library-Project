@@ -1,4 +1,4 @@
-import { Navbar } from "../../Components/Navbar";
+import { Navbar } from "../Components/Navbar";
 import React, { useState, useEffect } from 'react'
 import Cookies from "js-cookie";
 import '../CSS/usersettings.css'

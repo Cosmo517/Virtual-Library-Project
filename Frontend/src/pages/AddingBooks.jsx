@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api'
-import { Navbar } from '../../Components/Navbar';
+import { Navbar } from '../Components/Navbar';
 
 export const AddingBooks = ({ isAuthenticated}) => {
     // this will be a "form" for books

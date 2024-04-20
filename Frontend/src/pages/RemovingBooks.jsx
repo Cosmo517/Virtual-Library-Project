@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navbar } from "../../Components/Navbar";
+import { Navbar } from "../Components/Navbar";
 import api from "../api";
 
 export const RemovingBooks = ({ isAuthenticated }) => {

@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import api from "../src/api"
+import api from "../api"
 import { Navigate, Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Navbar } from './Navbar';
@@ -32,7 +32,6 @@ export const AdminRoutes = () => {
             {
                 setIsAuthenticated(false)
             }
-
         }
 
         authorize()

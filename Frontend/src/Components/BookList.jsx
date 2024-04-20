@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Book } from "./Book";
-import '../src/CSS/browse.css'
+import '../CSS/browse.css'
 
 export const BookList = ({ bookList }) => {
     const books = bookList

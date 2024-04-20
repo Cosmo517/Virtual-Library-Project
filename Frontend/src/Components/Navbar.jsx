@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import '../src/CSS/custom_nav_padding.css';
+import '../CSS/custom_nav_padding.css';
 
-export const Navbar = ({ isAuthenticated }) => {
-    const isAdmin = isAuthenticated;
+export const Navbar = () => {
+    const isAdmin = false;
 
     return (
         <header>
