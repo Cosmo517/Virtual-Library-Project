@@ -59,9 +59,6 @@ export const Navbar = ({ isAuthenticated }) => {
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a className="dropdown-item" href="#/UserSettings">Settings</a>
-                                <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#/Login">Login</a>
-                                <a className="dropdown-item" href="#/Register">Register</a>
                             </div>
                         </li>
                     </ul>

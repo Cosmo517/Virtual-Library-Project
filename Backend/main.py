@@ -7,7 +7,7 @@ import models
 import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
-from sqlalchemy import delete
+from sqlalchemy import delete, desc
 from JWT_handler import signJWT, decodeJWT
 
 app = FastAPI()
@@ -62,6 +62,11 @@ class JWT_token(BaseModel):
 class SearchRequest(BaseModel):
     search: str
     searchType: str
+    AZ: bool
+    ZA: bool
+    yearBefore: int
+    yearAfter: int
+    
 
 def get_db():
     db = SessionLocal()
@@ -118,16 +123,41 @@ async def read_books(db: db_dependency, skip: int = 0, limit: int = 100):
 @app.post('/filter/', status_code=status.HTTP_200_OK)
 async def filter_books(filter: SearchRequest, db: db_dependency):
     search_info = filter.model_dump()
+    
+    search = search_info['search']
     searchType = search_info['searchType']
+    AZ = search_info['AZ']
+    ZA = search_info['ZA']
+    yearBefore = search_info['yearBefore']
+    yearAfter = search_info['yearAfter']
+    print(yearBefore)
+    
+    
     filtered_books = {}
     if searchType == 'ISBN':
-        filtered_books = db.query(models.Books).filter(models.Books.isbn.like("%" + search_info['search'] + "%")).all()
+        if ZA:
+            filtered_books = db.query(models.Books).filter(models.Books.isbn.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.title.desc()).all()
+        else:
+            filtered_books = db.query(models.Books).filter(models.Books.isbn.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.title).all()
+
     elif searchType == 'Title':
-        filtered_books = db.query(models.Books).filter(models.Books.title.like("%" + search_info['search'] + "%")).all()
+        if ZA:
+            filtered_books = db.query(models.Books).filter(models.Books.title.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.title.desc()).all()
+        else:
+            filtered_books = db.query(models.Books).filter(models.Books.title.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.title).all()
+    
     elif searchType == 'Author':
-        filtered_books = db.query(models.Books).filter(models.Books.author.like("%" + search_info['search'] + "%")).all()
+        if ZA:
+            filtered_books = db.query(models.Books).filter(models.Books.author.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.author.desc()).all()
+        else:
+                        filtered_books = db.query(models.Books).filter(models.Books.author.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.author).all()
+    
     elif searchType == 'Genre':
-        filtered_books = db.query(models.Books).filter(models.Books.category.like("%" + search_info['search'] + "%")).all()
+        if ZA:
+            filtered_books = db.query(models.Books).filter(models.Books.category.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.category.desc()).all()
+        else:
+            filtered_books = db.query(models.Books).filter(models.Books.category.like("%" + search + "%"), models.Books.published_year.between(yearBefore, yearAfter)).order_by(models.Books.category).all()
+    
     return filtered_books
 
 
