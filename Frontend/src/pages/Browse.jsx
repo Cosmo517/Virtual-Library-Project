@@ -35,7 +35,7 @@ export const Browse = () => {
         }
         catch { }
         let yearBefore = document.getElementById('yearBefore').value == '' ? 0 : document.getElementById('yearBefore').value
-        let yearAfter = document.getElementById('yearAfter').value == ''? 9999 : document.getElementById('yearAfter').value
+        let yearAfter = document.getElementById('yearAfter').value == '' ? 9999 : document.getElementById('yearAfter').value
         let searchBar = document.getElementById('search-bar').value
 
         if (titleSelectedAZ && titleSelectedZA) 
