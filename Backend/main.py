@@ -214,15 +214,14 @@ async def most_pages(db: db_dependency):
 @app.get("/funfacts total amount of books/", status_code=status.HTTP_201_CREATED)
 async def total_books(db: db_dependency):
     books = db.query(models.Books).count()
-    return books
+    return {'books' : books}
 
 # TODO: Fun functions of total pages
-# @app.get("/funfacts total amount of pages/", status_code=status.HTTP_201_CREATED)
-# async def total_pages(db: db_dependency):
-#     pages = select([func.sum(models.Books.page_count)])
-#     return pages
+@app.get("/funfacts total amount of pages/", status_code=status.HTTP_201_CREATED)
+async def total_pages(db: db_dependency):
+    pages = db.query(func.sum(models.Books.page_count)).scalar()
+    return {'pages' : pages}
 
-# TODO: Fun functions of top 5 rated books
 
 # this will add users to the database, thus should be used by the
 # frontend to create users (register accounts)
