@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api'
 import '../CSS/custom_nav_padding.css'
+import '../CSS/login.css'
 import Cookies from 'js-cookie'
 
 export const Login = () => {
@@ -11,6 +12,7 @@ export const Login = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        let info = document.getElementById('info')
         let signedjwt = await api.post('/login/', formData)
         setFormData({
             username: '',
@@ -20,6 +22,10 @@ export const Login = () => {
         {
             Cookies.set('token', signedjwt['data']['token'])
             window.location.href='/';
+        }
+        else 
+        {
+            info.innerHTML = 'Invalid username or password'
         }
     };
 
@@ -47,12 +53,14 @@ export const Login = () => {
                     <div className='mb-1'>
                         <input type='password' className='form-control' placeholder='Password' id='password' name='password' onChange={handleInputChange} value={formData.password} />
                     </div>
-                
+
+                    <label id='info'></label> <br/>
+
                     <button type='submit' className='btn btn-primary'>
                         Login
                     </button>
                 
-                    <button className='btn btn-primary button_spacing' onClick={() => {window.location.href='/#/register'}}>
+                    <button className='btn btn-primary button-spacing' onClick={() => {window.location.href='/#/register'}}>
                         Register an Account
                     </button>
                 </form>

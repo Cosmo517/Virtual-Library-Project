@@ -232,12 +232,13 @@ async def create_user(user: UserRegistrationBase, db: db_dependency):
     del holdUser['checkpass']
     username = db.query(models.User).filter(models.User.username == holdUser["username"]).first()
     if username:
-        raise HTTPException(status_code=409, detail='User already exists')
+        return {'response' : 'Username taken'}
     else:
         holdUser["password"] = stringToHash(holdUser["password"])
         db_user = models.User(**holdUser)
         db.add(db_user)
         db.commit()
+        return {'response' : 'Success'}
 
 
 # this filters the users to grab a specific row from the database

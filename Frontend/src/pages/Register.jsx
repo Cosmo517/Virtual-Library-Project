@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api'
 import '../CSS/custom_nav_padding.css'
-
+import '../CSS/register.css'
 
 export const Register = () => {
     // this will be a "form" for users
@@ -22,15 +22,39 @@ export const Register = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        let info = document.getElementById('info')
         if (formData.username !== '' && formData.password.length >= 10 && formData.password == formData.checkpass)
         {
-            await api.post('/users/', formData)
-            setFormData({
-                username: '',
-                password: '',
-                checkpass: '',
-                administrator: 0
-            });
+            let response = await api.post('/users/', formData)
+            if (response.data.response == 'Accepted')
+            {
+                setFormData({
+                    username: '',
+                    password: '',
+                    checkpass: '',
+                    administrator: 0
+                });
+                info.innerHTML = 'Account created successfully'
+            }
+            else if (response.data.response == 'Username taken')
+            {
+                info.innerHTML = 'Username already exists'
+            }
+            else {
+                info.innerHTML = 'Server error'
+            }
+        }
+        else if (formData.username === '')
+        {
+            info.innerHTML = 'Username cannot be blank'
+        }
+        else if (formData.password != formData.checkpass)
+        {
+            info.innerHTML = 'New passwords do not match'
+        }
+        else
+        {
+            info.innerHTML = 'Error'
         }
     };
 
@@ -56,11 +80,13 @@ export const Register = () => {
                         <input type='password' className='form-control' placeholder='Retype Password' id='checkpass' name='checkpass' onChange={handleInputChange} value={formData.checkpass}/>
                     </div>
 
+                    <label id='info'></label> <br/>
+
                     <button type='submit' className='btn btn-primary'>
                         Register
                     </button>
 
-                    <button className='btn btn-primary button_spacing' onClick={() => {window.location.href='/#/login'}}>
+                    <button className='btn btn-primary button-spacing' onClick={() => {window.location.href='/#/login'}}>
                         Back to Login
                     </button>
                 </form>
