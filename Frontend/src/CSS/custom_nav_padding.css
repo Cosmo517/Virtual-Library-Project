@@ -1,6 +1,4 @@
-body
-{ 
-
+body {
     --background: #ffffff;
     --accent1: #606060;
     --accent2: #151b46;
@@ -12,9 +10,35 @@ body
 
 /* Navbar */
 .navbar {
-    background-color: #151b46; /* Dark Blue */
-    border-bottom: 3px solid #ffffff; /* Dark Gray */
+    background-color: var(--accent2);
+    border-bottom: 3px solid var(--accent4);
+    border-radius: 5px;
     width: 100%;
+    margin: 0px;
+}
+.nav-item1 {
+    margin-right: 30px; 
+    margin-left: 30px; 
+    border: dashed var(--accent4);
+}
+
+.nav-item2 {
+    margin-right: 30px; 
+    margin-left: 30px; 
+    border: dashed var(--accent4);
+}
+
+.nav-item3 {
+    margin-right: 0px; 
+}
+
+.dropdown-toggle {
+    margin-left: 30px; 
+    margin-right: 30px; 
+    border: dashed var(--accent4);
+}
+.dropdown-toggle:hover {
+    color: var(--accent4) !important; /* Change to desired color */
 }
 
 .navbar-brand {
@@ -22,51 +46,50 @@ body
     align-self: center;
     height: 60px;
     font-size: 2.45rem;
-    font-family: 'Exo', sans-serif; /* Exo font */
-    color: #ffffff; /* White */
+    font-family: 'Exo', sans-serif;
+    color: #ffffff;
 }
 
 .navbar-nav {
-    font-family: 'PT Sans Narrow', sans-serif; /* PT Sans Narrow font */
+    font-family: 'PT Sans Narrow', sans-serif;
     font-size: 1.45rem;
-    margin: 0px;
+    margin: 0;
 }
 
-.nav-link a{
-    color: #ffffff; /* White */
+.nav-link a {
+    color: #ffffff;
+    transition: color 0.3s ease;
 }
 
-.nav-link a:hover {
-    color: #8fffff; /* Light Blue */
+.nav-link:hover {
+    color: var(--accent4) !important;
 }
 
 .dropdown-menu {
-    background: #0000005f; /* Transparent Black */
-    border: solid 1px #8fffff; /* Light Green */
+    background: #0000006f;
+    border: 1px solid var(--accent3);
     border-radius: 10px;
     margin-bottom: 10px;
-    max-height: calc(100vh - 70px); /* Adjusted to exclude the height of the navbar and provide some spacing */
-    overflow-y: auto;
-    right: 0; /* Align the dropdown menu to the right edge */
+    margin-right: 0px;
 }
-
 
 .dropdown-menu a {
     font-size: 1.25rem;
     padding-left: 10px !important;
-    padding-right: 5px !important;
-    color: #ffffff; /* White */
+    padding-right: 0px !important;
+    color: #ffffff;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .dropdown-menu a:hover {
-    color: #95ffae; /* White */
-    background-color: #1d2875; /* Dark Blue */
+    color: var(--accent4);
+    background-color: var(--accent2);
 }
 
 .navbar-nav:hover .nav-link a {
-    color: #8fffff; /* Light Blue */
+    color: var(--accent3);
 }
 
 .navbar-nav:hover {
-    background-color: #2c4ed7; /* Darker Blue */
+    background-color: var(--accent5);
 }

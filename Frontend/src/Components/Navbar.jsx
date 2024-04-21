@@ -16,21 +16,21 @@ export const Navbar = () => {
 
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul className="navbar-nav">
-                        <li className="nav-item active">
+                        <li className="nav-item1 active">
                             <a className='nav-link' href='#'>
                                 Dashboard
                             </a>
                         </li>
                     </ul>
                     <ul className="navbar-nav">
-                        <li className="nav-item active">
+                        <li className="nav-item2 active">
                             <a className='nav-link' href='#/Browse'>
                                 Browse
                             </a>
                         </li>
                     </ul>
                     <ul className="navbar-nav">
-                        <li className="nav-item active dropdown">
+                        <li className="nav-item3 active dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 More
@@ -38,7 +38,7 @@ export const Navbar = () => {
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a className="dropdown-item" href="#/UserSettings">Settings</a>
                                 <a className="dropdown-item" href="#/AddingBooks">Add Books</a>
-                                <a className="dropdown-item" href="#/RemoveBooks">Remove Books</a>
+                                <a className="dropdown-item" href="#/RemovingBooks">Remove Books</a>
                             </div>
                         </li>
                     </ul>
