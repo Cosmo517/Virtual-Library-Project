@@ -1,56 +1,93 @@
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Fact boxes */
-.dashboard_long_facts,
-.dashboard_short_facts {
-    border: 2px solid var(--accent1);
-    width: 400px;
+.dashboard_fact_box {
+    font-family: 'PT Sans Narrow', sans-serif;
+    width: 300px; 
     height: auto;
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
+    margin-top: 75px; 
+    margin-right: 50px;
+    margin-left: 50px;
+    padding: 20px;
+    border-radius: 10px; 
+    background-color: var(--accent5); 
+    box-shadow: 0px 0px 30px #95ffae;
 
-.dashboard_long_facts {
-    margin-left: 25px;
-}
-
-.dashboard_short_facts {
-    margin-left: 100px;
+    opacity: 0; 
+    animation: fadeInUp 6s ease forwards; 
 }
 
 /* Fact title */
-.dashboard_long_facts h1,
-.dashboard_short_facts h1 {
-    font-size: 24px;
+.dashboard_fact_box h1 {
+    font-size: 30px;
     margin-bottom: 10px;
-    color: #95ffae;
-    background-color: var(--accent2);
+    color: var(--accent3); 
+
+
+    opacity: 0; 
+    animation: fadeInUp 6s ease forwards; 
 }
 
 /* Fact content */
-.dashboard_long_facts h2,
-.dashboard_short_facts h2 {
-    font-size: 18px;
+.dashboard_fact_box h2 {
+    font-size: 23px; 
     margin-bottom: 5px;
-    color: var(--text_color);
+    color: var(--accent2);
+
+    opacity: 0; 
+    animation: fadeInUp 6s ease forwards;
 }
 
-.dashboard_long_facts p,
-.dashboard_short_facts p {
+.dashboard_fact_box p {
     font-size: 16px;
-    color: var(--accent1);
+    color: var(--background);
     line-height: 1.5;
-}
-
-.dashboard_long_fact_4 {
-    margin-left: 100px;
 }
 
 .hero {
     background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3));
     border-radius: 10px;
+    font-family: 'Exo', sans-serif;
+    font-size: 50px;
     padding-top: 110px;
     padding-bottom: 50px;
     width: 100%;
     text-align: center;
     align-self: center;
     color: #95ffae;
+}
+
+.hero h1 {
+    font-size: 60px; 
+}
+
+.hero h2 {
+    font-size: 30px;
+}
+
+.hero h1, .hero h2 {
+    animation: fadeIn 5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Footer */
+footer {
+    font-family: 'Exo', sans-serif;
+    background-color: var(--accent2);
+    color: #ffffff; 
+    padding-top: 10px; 
+    padding-bottom: 0px;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    font-size: 14px;
+    text-align: center; 
 }
