@@ -297,3 +297,5 @@ async def login(login: LoginRequest, db: db_dependency):
 async def validate_jwt(token: JWT_token, db: db_dependency):
     data = decodeJWT(token.token)
     return data
+
+######################################## Uint testing things ########################################
