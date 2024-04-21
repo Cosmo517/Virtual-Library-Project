@@ -1,17 +1,68 @@
-.all-settings-container {
-    margin-top: 100px;
-    outline: 2px;
-    outline-color: #151b46;
-    outline-style: solid;
-    border-radius: 5px;
-    margin-left: 30%;
-    min-width: 300px;
-    max-width: 600px;
-    min-height: 360px;
-    max-height: 360px;
+.page-wrapper {
+    background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0; 
+    position: relative;
 }
 
+.all-settings-container {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    border-radius: 5px;
+    border: dashed var(--accent4);
+    box-shadow: 0 0 10px var(--accent4);
+    width: 600px;
+    max-width: 90%; 
+    height: 400px;
+    padding: 20px; 
+    background-color: #ffffff9f;
+    font-family: 'Exo', sans-serif;
+    color: var(--accent4);
+    font-size: 15px; 
+}
+
+#logout {
+    position: absolute;
+    bottom: 10px; 
+    left: 10px; 
+    background-color: var(--accent2); 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
+
+
 .submit-button {
-    float: right;
-    margin-right: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px; 
+    background-color: var(--accent2); 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
+
+.submit-button:hover, #logout:hover {
+    background-color: var(--accent5);
+    color: var(--accent4);
+}
+
+footer {
+    font-family: 'Exo', sans-serif;
+    background-color: var(--accent2);
+    color: #ffffff; 
+    padding-top: 10px; 
+    padding-bottom: 0px;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    font-size: 14px;
+    text-align: center; 
 }

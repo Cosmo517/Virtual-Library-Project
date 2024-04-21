@@ -38,7 +38,7 @@ body {
     border: dashed var(--accent4);
 }
 .dropdown-toggle:hover {
-    color: var(--accent4) !important; /* Change to desired color */
+    color: var(--accent4) !important;
 }
 
 .navbar-brand {

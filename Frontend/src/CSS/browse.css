@@ -1,24 +1,21 @@
-/* Update the background of the entire page */
 .page-wrapper {
-    background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); /* Background gradient */
-    min-height: 100vh; /* Ensure the wrapper covers the full viewport height */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0; 
 }
 
-
-/* Keep the filter container styling */
 .filter-container {
     width: 15%;
     margin-left: 10px;
     margin-top: 10.2%;
-    border: 1px solid #95ffae; /* Border color */
+    border: 1px solid #95ffae; 
     border-radius: 5px;
     min-height: 225px;
     max-height: 225px;
-    background-color: #151b46; /* Background color */
+    background-color: #151b46; 
     padding: 15px;
-    float: left; /* Align filter container to the left */
+    float: left; 
 }
 
 .center-text {
@@ -27,51 +24,51 @@
 
 .filter-container input[type="radio"] {
     margin-right: 5px;
-    background-color: var(--accent2); /* Radio button background color */
-    color: #fff; /* Radio button text color */
+    background-color: var(--accent2); 
+    color: #fff; 
 }
 
 .filter-container label {
-    color: #fff; /* Label text color */
+    color: #fff; 
 }
 
 .filter-container button {
     margin-top: 15px;
-    background-color: #2c4ed7; /* Button background color */
-    color: #fff; /* Button text color */
+    background-color: #2c4ed7; 
+    color: var(--background); 
     border: none;
 }
 
 .filter-container button:hover {
-    background-color: #1d2875; /* Button hover background color */
+    background-color: #1d2875; 
 }
 
 .filter-container input[type="number"],
 .filter-container input[type="text"] {
-    background-color: #2c4ed7; /* Input background color */
-    color: #fff; /* Input text color */
-    border: 1px solid #95ffae; /* Input border color */
+    background-color: #2c4ed7; 
+    color: var(--background); 
+    border: 1px solid #95ffae;
 }
 
 .filter-container input[type="number"]::placeholder,
 .filter-container input[type="text"]::placeholder {
-    color: #95ffae; /* Placeholder text color */
+    color: #95ffae;
 }
 
 .books-container {
     width: 80%;
     margin-left: 10px;
-    float: left; /* Align books container to the left */
+    float: left;
 }
 
 .search_button {
-    margin-left: 15px; /* Add left margin to the search button */
-    margin-top: 15px; /* Add top margin to the search button */
-    background-color: #151b46; /* Button background color */
-    color: #fff; /* Button text color */
+    margin-left: 15px; 
+    margin-top: 15px; 
+    background-color: #151b46; 
+    color: var(--background);
     border: none;
 }
 
 .search_button:hover {
-    background-color: #2c4ed7; /* Button hover background color */
+    background-color: #2c4ed7;
 }
