@@ -137,8 +137,13 @@ createAdminAccount()
 @app.post("/books/", status_code=status.HTTP_201_CREATED)
 async def create_book(book: BooksBase, db: db_dependency):
     db_book = models.Books(**book.model_dump())
-    db.add(db_book)
-    db.commit()
+    book_info = db.query(models.Books).filter(models.Books.isbn == book.isbn).first()
+    if not book_info:            
+        db.add(db_book)
+        db.commit()
+        return {'response' : 'success'}
+    else:
+        return {'response' : 'book already exists'}
 
 # this will get a book (or multiple) from the database
 # can be used by the frontend to get books.

@@ -17,6 +17,8 @@ export const RemovingBooks = ({ isAuthenticated }) => {
         category: ''
     }})
 
+    const [showModal, setShowModal] = useState(false)
+
     const handleInputChange = (event) => {
         const value = event.target.value
         setFormData({
@@ -27,10 +29,21 @@ export const RemovingBooks = ({ isAuthenticated }) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
+        let info = document.getElementById('info')
         if (formData.isbn !== '')
         {
             formData.isbn = formData.isbn.replace(/[^0-9]/g, "")
-            setResponse(await api.post("/single_book/", formData));
+            let response = await api.post("/single_book/", formData)
+            if (response.data == null)
+            {
+                info.innerHTML = 'Book not found'
+                setShowModal(false)
+            }
+            else {
+                info.innerHTML = ''
+                setResponse(response);
+                setShowModal(true)
+            }
         }
     }
 
@@ -63,9 +76,12 @@ export const RemovingBooks = ({ isAuthenticated }) => {
                         value={formData.isbn}/>
                     </div>
 
+                    <label id='info'></label>
+
                     <button 
                         type='submit' 
-                        className='btn btn-primary' 
+                        className='btn btn-primary'
+                        style={{float: 'right'}} 
                         data-toggle="modal" 
                         data-target="#confirmChoice"
                     >
@@ -74,7 +90,7 @@ export const RemovingBooks = ({ isAuthenticated }) => {
                 </form>
             </div>
 
-            { (response.data !== null && response.data.isbn !== '') &&
+            { showModal &&
             <div 
                 className="modal" 
                 id='confirmChoice' 
@@ -105,7 +121,7 @@ export const RemovingBooks = ({ isAuthenticated }) => {
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={formSubmit}>Yes</button>
+                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={formSubmit} >Yes</button>
                         </div>
                     </div>
                 </div>
