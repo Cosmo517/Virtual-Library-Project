@@ -101,7 +101,7 @@ export const Browse = () => {
     }, [])
 
     return (
-        <div className="page-wrapper"> {/* Wrapper div with the background gradient */}
+        <div className="page-wrapper">
             <Navbar/>
             <div className="row-resize">
                 <div className="filter-container">
@@ -117,11 +117,12 @@ export const Browse = () => {
                         <label>and</label>
                         <input style={{ marginLeft: '5px', width: '80px'}} id='yearAfter' type="number"/>
                     </div>
-                    <button className="btn btn-primary mr-2 mt-3" style={{ float: 'right'}} onClick={handleFilter}>Apply</button>
+                    <button className="btn btn-primary1 mr-2 mt-3" style={{ float: 'right'}} onClick={handleFilter}>Apply</button>
                 </div>
+            </div>
 
             <div className="books-container mt-4 mb-4">
-                <form onSubmit={handleFormSubmit} style={{ marginTop: '80px', marginLeft: '25px' }}>
+                <form onSubmit={handleFormSubmit}>
                     <div className="row mb-3 row_resize">
                         <select className="form-select" id="search-bar-type" name="searchType" onChange={handleInputChange} value={formData.searchType}>
                             <option value='Title' defaultValue='Title'>Title</option>
@@ -132,15 +133,18 @@ export const Browse = () => {
 
                             <input type='text' className='form-control text_resize' placeholder='Search' id='search-bar' name='search'  onChange={handleInputChange} value={formData.search}/>
                             
-                            <button type='submit' className='btn btn-primary search_button'>
+                            <button type='submit' className='btn btn-primary2 search_button'>
                                 Search
                             </button>
                         </div>
                     </form>
-                    
                     <BookList bookList={books}/>
                 </div>
-            </div>
+            {/* Footer Section */}
+            <footer>
+                <p style={{ float: 'left' }}><strong>&copy; Virtual Library 2024, Web Portal for the Home Library</strong></p>
+                <p style={{ float: 'right' }}><strong>Team 1.12.2: E.B., H.F., J.K.</strong></p>
+            </footer>
         </div>
     );
 }
