@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api'
 import { Navbar } from '../Components/Navbar';
+import '../CSS/add_books.css'
 
 export const AddingBooks = ({ isAuthenticated}) => {
     // this will be a "form" for books
@@ -61,6 +62,7 @@ export const AddingBooks = ({ isAuthenticated}) => {
 
     return (
         <>
+        <div className="page-wrapper"> 
             <Navbar isAuthenticated={isAuthenticated }/>
             <div className='container'>
                 <form onSubmit={handleFormSubmit}>
@@ -98,7 +100,13 @@ export const AddingBooks = ({ isAuthenticated}) => {
                         Add Book
                     </button>
                 </form>
-        </div>
+            </div>
+            {/* Footer Section */}
+            <footer>
+                <p style={{ float: 'left' }}><strong>&copy; Virtual Library 2024, Web Portal for the Home Library</strong></p>
+                <p style={{ float: 'right' }}><strong>Team 1.12.2: E.B., H.F., J.K.</strong></p>
+            </footer>
+    </div>
     </>
     )
 }
