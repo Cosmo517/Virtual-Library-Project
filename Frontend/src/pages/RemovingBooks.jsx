@@ -46,9 +46,18 @@ export const RemovingBooks = ({ isAuthenticated }) => {
                 setShowModal(true)
             }
         }
+        else if (formData.isbn === '')
+        {
+            info.innerHTML = 'ISBN field is empty'
+        }
+        else
+        {
+            info.innerHTML = 'Error'
+        }
     }
 
     const formSubmit = async () => {
+        setShowModal(false)
         setResponse({data: {
             isbn: '',
             title: '',
@@ -83,7 +92,8 @@ export const RemovingBooks = ({ isAuthenticated }) => {
                     <button 
                         type='submit' 
                         className='btn btn-primary'
-                        style={{float: 'right'}} 
+                        style={{float: 'right'}}
+                        onClick={console.log('remove book button clicked')} 
                         data-toggle="modal" 
                         data-target="#confirmChoice"
                     >

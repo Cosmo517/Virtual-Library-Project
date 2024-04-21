@@ -49,7 +49,7 @@
     color: var(--accent5);
 }
 
-.modal {
+/* .modal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,7 +61,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6); 
-}
+} */
 
 .modal-dialog {
     max-width: 500px; 
