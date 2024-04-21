@@ -1,7 +1,19 @@
+body
+{ 
+
+    --background: #ffffff;
+    --accent1: #606060;
+    --accent2: #151b46;
+    --accent3: #8fffff;
+    --accent4: #95ffae;
+    --accent5: #2c4ed7;
+    --text_color: #000000;
+}
+
 /* Navbar */
 .navbar {
     background-color: #151b46; /* Dark Blue */
-    border-bottom: 3px solid #606060; /* Dark Gray */
+    border-bottom: 3px solid #ffffff; /* Dark Gray */
     width: 100%;
 }
 
@@ -17,31 +29,27 @@
 .navbar-nav {
     font-family: 'PT Sans Narrow', sans-serif; /* PT Sans Narrow font */
     font-size: 1.45rem;
-    margin: 0;
+    margin: 0px;
 }
 
-.nav-item {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.navbar-link {
+.nav-link a{
     color: #ffffff; /* White */
-    text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-.navbar-link:hover {
+.nav-link a:hover {
     color: #8fffff; /* Light Blue */
-    
 }
 
 .dropdown-menu {
-    background: #00000080; /* Transparent Black */
-    border: solid 1px #95ffae; /* Light Green */
+    background: #0000005f; /* Transparent Black */
+    border: solid 1px #8fffff; /* Light Green */
     border-radius: 10px;
     margin-bottom: 10px;
+    max-height: calc(100vh - 70px); /* Adjusted to exclude the height of the navbar and provide some spacing */
+    overflow-y: auto;
+    right: 0; /* Align the dropdown menu to the right edge */
 }
+
 
 .dropdown-menu a {
     font-size: 1.25rem;
@@ -51,8 +59,12 @@
 }
 
 .dropdown-menu a:hover {
-    color: #ffffff; /* White */
+    color: #95ffae; /* White */
     background-color: #1d2875; /* Dark Blue */
+}
+
+.navbar-nav:hover .nav-link a {
+    color: #8fffff; /* Light Blue */
 }
 
 .navbar-nav:hover {
