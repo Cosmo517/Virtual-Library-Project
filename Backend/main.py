@@ -2,13 +2,14 @@ from fastapi import FastAPI, HTTPException, Depends, status
 from typing import Annotated, List
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import func, select
+from sqlalchemy import func
 import models
 import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
-from sqlalchemy.orm import Session
-from sqlalchemy import delete, desc
+from sqlalchemy.orm import Session, sessionmaker
 from JWT_handler import signJWT, decodeJWT
+import configparser
+import os
 
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
@@ -99,6 +100,36 @@ def isPasswordCorrect(correct,check):
     else:
         return False
 
+
+config_file = None
+if (os.path.isfile('dev.cfg')):
+    config_file = 'dev.cfg'
+else:
+    config_file = 'settings.cfg'
+        
+# Read from the configuration file
+config = configparser.ConfigParser()
+config.read(config_file)
+
+admin_user = config['LIBRARY']['user']
+admin_pass = config['LIBRARY']['password']
+
+
+# create admin account if its not already created
+def createAdminAccount():
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    db = SessionLocal()
+    admin_account = UserBase(username=admin_user, password=admin_user, administrator=1)
+    details = admin_account.model_dump()
+    admin_username = db.query(models.User).filter(models.User.username == details['username']).first()
+    if not admin_username:
+        details["password"] = stringToHash(details["password"])
+        db_user = models.User(**details)
+        db.add(db_user)
+        db.commit()
+
+createAdminAccount()
+
 #! Below here (should I think) be all the database queries
 
 # this will add books to the database, thus should be used
@@ -106,8 +137,13 @@ def isPasswordCorrect(correct,check):
 @app.post("/books/", status_code=status.HTTP_201_CREATED)
 async def create_book(book: BooksBase, db: db_dependency):
     db_book = models.Books(**book.model_dump())
-    db.add(db_book)
-    db.commit()
+    book_info = db.query(models.Books).filter(models.Books.isbn == book.isbn).first()
+    if not book_info:            
+        db.add(db_book)
+        db.commit()
+        return {'response' : 'success'}
+    else:
+        return {'response' : 'book already exists'}
 
 # this will get a book (or multiple) from the database
 # can be used by the frontend to get books.

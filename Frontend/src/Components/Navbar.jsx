@@ -14,45 +14,31 @@ export const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item active">
+                <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul className="navbar-nav">
+                        <li className="nav-item1 active">
                             <a className='nav-link' href='#'>
                                 Dashboard
                             </a>
                         </li>
                     </ul>
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item active">
+                    <ul className="navbar-nav">
+                        <li className="nav-item2 active">
                             <a className='nav-link' href='#/Browse'>
                                 Browse
                             </a>
                         </li>
                     </ul>
-
-                            <ul className="navbar-nav ml-auto">
-                                <li className="nav-item active">
-                                    <a className='nav-link' href='#/AddingBooks'>
-                                        Add Books
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul className="navbar-nav ml-auto">
-                                <li className="nav-item active">
-                                    <a className='nav-link' href="#/RemovingBooks">
-                                        Remove Books
-                                    </a>
-                                </li>
-                            </ul>
-                    
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item active dropdown">
+                    <ul className="navbar-nav">
+                        <li className="nav-item3 active dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 More
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a className="dropdown-item" href="#/UserSettings">Settings</a>
+                                <a className="dropdown-item" href="#/AddingBooks">Add Books</a>
+                                <a className="dropdown-item" href="#/RemovingBooks">Remove Books</a>
                             </div>
                         </li>
                     </ul>

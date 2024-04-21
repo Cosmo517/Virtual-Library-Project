@@ -67,7 +67,7 @@ export const UserSettings = () => {
     };
     
     return (
-        <>
+        <div className="page-wrapper"> 
             <Navbar/>
             <div className="all-settings-container">
                 <h3 className="center-text">User Settings:</h3>
@@ -81,6 +81,11 @@ export const UserSettings = () => {
                     <button type="submit" className="btn btn-primary submit-button">Change Password</button>
                 </form>
             </div>
-        </>
+                {/* Footer Section */}
+                <footer>
+                    <p style={{ float: 'left' }}><strong>&copy; Virtual Library 2024, Web Portal for the Home Library</strong></p>
+                    <p style={{ float: 'right' }}><strong>Team 1.12.2: E.B., H.F., J.K.</strong></p>
+                </footer>
+        </div>
     );
 }

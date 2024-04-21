@@ -101,7 +101,7 @@ export const Browse = () => {
     }, [])
 
     return (
-        <>
+        <div className="page-wrapper"> {/* Wrapper div with the background gradient */}
             <Navbar/>
             <div className="row-resize">
                 <div className="filter-container">
@@ -141,6 +141,6 @@ export const Browse = () => {
                     <BookList bookList={books}/>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
