@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navbar } from "../Components/Navbar";
 import api from "../api";
+import '../CSS/remove_books.css'
 
 export const RemovingBooks = ({ isAuthenticated }) => {
     const [formData, setFormData] = useState({
@@ -62,10 +63,11 @@ export const RemovingBooks = ({ isAuthenticated }) => {
     }
 
     return (
-        <>
+        <div className="page-wrapper"> 
             <Navbar isAuthenticated={isAuthenticated} />
             <div className="container" style={ { marginTop: "100px"} }>
                 <form onSubmit={handleFormSubmit}>
+                    <p>Please enter the ISBN of the book you wish to remove</p>
                     <div className="mt-1 mb-3">
                         <input 
                         type='text' 
@@ -126,6 +128,11 @@ export const RemovingBooks = ({ isAuthenticated }) => {
                     </div>
                 </div>
             </div>}
-        </>
+            {/* Footer Section */}
+            <footer>
+                <p style={{ float: 'left' }}><strong>&copy; Virtual Library 2024, Web Portal for the Home Library</strong></p>
+                <p style={{ float: 'right' }}><strong>Team 1.12.2: E.B., H.F., J.K.</strong></p>
+            </footer>
+        </div>
     );
 }
