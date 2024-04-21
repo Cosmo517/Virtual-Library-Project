@@ -1,23 +1,11 @@
 /* Fact boxes */
-body
-{ 
-
-    --background: #ffffff;
-    --accent1: #606060;
-    --accent2: #151b46;
-    --accent3: #8fffff;
-    --accent4: #95ffae;
-    --accent5: #2c4ed7;
-    --text_color: #000000;
-}
-
 .dashboard_long_facts,
 .dashboard_short_facts {
-    border: 2px solid #606060; /* Gray */
+    border: 2px solid var(--accent1);
     width: 400px;
-    height: auto; /* Adjusted height to fit content */
+    height: auto;
     margin-bottom: 20px;
-    margin-top: 50px; /* Added margin from the top */
+    margin-top: 50px;
 }
 
 .dashboard_long_facts {
@@ -33,9 +21,8 @@ body
 .dashboard_short_facts h1 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #95ffae; /* Black */
-    background-color: #151b46;
-    
+    color: #95ffae;
+    background-color: var(--accent2);
 }
 
 /* Fact content */
@@ -43,23 +30,22 @@ body
 .dashboard_short_facts h2 {
     font-size: 18px;
     margin-bottom: 5px;
-    color: #000000; /* Black */
+    color: var(--text_color);
 }
 
 .dashboard_long_facts p,
 .dashboard_short_facts p {
     font-size: 16px;
-    color: #606060; /* Gray */
+    color: var(--accent1);
     line-height: 1.5;
 }
 
 .dashboard_long_fact_4 {
-    margin-left: 100px; /* Increase margin to the left */
+    margin-left: 100px;
 }
 
-.hero
-{
-    background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3));   
+.hero {
+    background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3));
     border-radius: 10px;
     padding-top: 110px;
     padding-bottom: 50px;
