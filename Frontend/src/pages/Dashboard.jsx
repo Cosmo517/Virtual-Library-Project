@@ -18,13 +18,10 @@ export const Dashboard = () => {
             const response2 = await api.get('/funfacts total amount of books/');
             const response3 = await api.get('/funfacts total amount of pages/');
 
-            console.log(response3.data.pages)
-
             setFunFacts([
                 {title: 'Largest Book:', fact: `Title: ${response1.data.title}, Pages: ${response1.data.page_count}` },
                 {title: 'Total Books:', fact: response2.data.books },
                 {title: 'Total Pages:', fact: response3.data.pages },
-                // {title: 'Top 5 Rated Books:', fact: JSON.stringify(data4.books) }
             ]);
         } catch (error){
             console.error('Error fetching fun facts:', error);

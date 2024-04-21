@@ -24,19 +24,39 @@ export const AddingBooks = ({ isAuthenticated}) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        let info = document.getElementById('info')
+        for (const key in formData) {
+            if (formData[key] == '') {
+                info.innerHTML = 'One or more fields are empty'
+                return;
+            }
+        }
+        
         formData.isbn = formData.isbn.replace(/[^0-9]/g, "")
         formData.page_count = parseInt(formData.page_count);
         formData.publish_year = parseInt(formData.publish_year);
-        await api.post('/books/', formData)
-        setFormData({
-            isbn: '',
-            title: '',
-            author: '',
-            publisher: '',
-            page_count: '',
-            published_year: '',
-            category: ''
-        });
+        let response = await api.post('/books/', formData)
+        if (response.data.response == 'success')
+        {
+            info.innerHTML = 'Book created successfully'
+            setFormData({
+                isbn: '',
+                title: '',
+                author: '',
+                publisher: '',
+                page_count: '',
+                published_year: '',
+                category: ''
+            });
+        }
+        else if (response.data.response == 'book already exists')
+        {
+            info.innerHTML = 'A book with that ISBN already exists'
+        }
+        else 
+        {
+            info.innerHTML = 'Server error'
+        }
     };
 
     return (
@@ -72,6 +92,8 @@ export const AddingBooks = ({ isAuthenticated}) => {
                         <input type='text' className='form-control' placeholder='Genre' id='category' name='category' onChange={handleInputChange} value={formData.category}/>
                     </div>
                 
+                    <label id='info'></label> <br/>
+
                     <button type='submit' className='btn btn-primary'>
                         Add Book
                     </button>
