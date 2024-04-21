@@ -2,13 +2,14 @@ from fastapi import FastAPI, HTTPException, Depends, status
 from typing import Annotated, List
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import func, select
+from sqlalchemy import func
 import models
 import hashlib #For doing hashing of passwords
 from database import engine, SessionLocal
-from sqlalchemy.orm import Session
-from sqlalchemy import delete, desc
+from sqlalchemy.orm import Session, sessionmaker
 from JWT_handler import signJWT, decodeJWT
+import configparser
+import os
 
 app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
@@ -98,6 +99,36 @@ def isPasswordCorrect(correct,check):
         return True
     else:
         return False
+
+
+config_file = None
+if (os.path.isfile('dev.cfg')):
+    config_file = 'dev.cfg'
+else:
+    config_file = 'settings.cfg'
+        
+# Read from the configuration file
+config = configparser.ConfigParser()
+config.read(config_file)
+
+admin_user = config['LIBRARY']['user']
+admin_pass = config['LIBRARY']['password']
+
+
+# create admin account if its not already created
+def createAdminAccount():
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    db = SessionLocal()
+    admin_account = UserBase(username=admin_user, password=admin_user, administrator=1)
+    details = admin_account.model_dump()
+    admin_username = db.query(models.User).filter(models.User.username == details['username']).first()
+    if not admin_username:
+        details["password"] = stringToHash(details["password"])
+        db_user = models.User(**details)
+        db.add(db_user)
+        db.commit()
+
+createAdminAccount()
 
 #! Below here (should I think) be all the database queries
 

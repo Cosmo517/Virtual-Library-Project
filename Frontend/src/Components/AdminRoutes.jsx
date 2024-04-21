@@ -42,7 +42,6 @@ export const AdminRoutes = () => {
 
     return (
         <>
-            <Navbar isAuthenticated={isAuthenticated} />
             {isAuthenticated ? <Outlet /> : <Navigate to="/" />}
         </>
     );
