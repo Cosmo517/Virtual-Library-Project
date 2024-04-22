@@ -24,6 +24,16 @@
     font-size: 15px; 
 }
 
+.all-settings-container input[type='password'] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--accent4); /* Add green border */
+    color: var(--accent2);
+}
+
+
 #logout {
     position: absolute;
     bottom: 10px; 
