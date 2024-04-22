@@ -62,7 +62,7 @@ export const AddingBooks = ({ isAuthenticated}) => {
 
     return (
         <>
-        <div className="page-wrapper"> 
+        <div className="page-wrapper1"> 
             <Navbar isAuthenticated={isAuthenticated }/>
             <div className='container1'>
                 <h5 className='center-text' style={{color: 'white'}}>Enter the information of a book you want to add</h5>

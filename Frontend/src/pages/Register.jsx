@@ -59,7 +59,7 @@ export const Register = () => {
     };
 
     return (
-        <div className='page-wrapper'>
+        <div className='page-wrapper4'>
             <div className='container4'>
                 <h4>
                     <center>

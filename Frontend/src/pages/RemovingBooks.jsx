@@ -72,7 +72,7 @@ export const RemovingBooks = ({ isAuthenticated }) => {
     }
 
     return (
-        <div className="page-wrapper"> 
+        <div className="page-wrapper2"> 
             <Navbar isAuthenticated={isAuthenticated} />
             <div className="container2" style={ { marginTop: "100px"} }>
                 <form onSubmit={handleFormSubmit}>
@@ -104,7 +104,7 @@ export const RemovingBooks = ({ isAuthenticated }) => {
 
             { showModal &&
             <div 
-                className="modal" 
+                className="modal modal-align" 
                 id='confirmChoice' 
                 tabIndex={-1} 
                 role="diaglog" 

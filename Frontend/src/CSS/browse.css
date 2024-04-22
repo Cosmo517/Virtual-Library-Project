@@ -1,6 +1,7 @@
-.page-wrapper {
+.page-wrapper9 {
     background: linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); 
-    min-height: auto; 
+    min-height: auto;
+    height: 200vh;
     margin: 0; 
     padding: 0; 
     position: relative;

@@ -101,7 +101,7 @@ export const Browse = () => {
     }, [])
 
     return (
-        <div className="page-wrapper">
+        <div className="page-wrapper9">
             <Navbar/>
             <div className="row-resize">
                 <div className="filter-container">

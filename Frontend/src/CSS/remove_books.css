@@ -1,4 +1,4 @@
-.page-wrapper {
+.page-wrapper2 {
     background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); 
     min-height: 100vh; 
     margin: 0; 
@@ -73,6 +73,13 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6); 
 } */
+
+.modal-align {
+    align-items: center;
+    justify-content: center;
+    margin-left: 33%;  
+    margin-top: 80px;  
+}
 
 .modal-dialog {
     max-width: 500px; 

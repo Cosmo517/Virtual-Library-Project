@@ -67,7 +67,7 @@ export const UserSettings = () => {
     };
     
     return (
-        <div className="page-wrapper"> 
+        <div className="page-wrapper3"> 
             <Navbar/>
             <div className="all-settings-container">
                 <h3 className="center-text">User Settings:</h3>
