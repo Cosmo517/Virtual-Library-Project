@@ -97,7 +97,7 @@ export const AddingBooks = ({ isAuthenticated}) => {
                 
                     <label id='info'></label> <br/>
 
-                    <button type='submit' className='btn btn-primary'>
+                    <button type='submit' className='btn btn-primary7'>
                         Add Book
                     </button>
                 </form>
