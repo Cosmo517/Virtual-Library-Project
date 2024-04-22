@@ -19,9 +19,9 @@ export const Dashboard = () => {
             const response3 = await api.get('/funfacts total amount of pages/');
 
             setFunFacts([
-                {title: 'Largest Book:', fact: `Title: ${response1.data.title}, Pages: ${response1.data.page_count}` },
-                {title: 'Total Books:', fact: response2.data.books },
-                {title: 'Total Pages:', fact: response3.data.pages },
+                {fact: `Title: ${response1.data.title}, Pages: ${response1.data.page_count}` },
+                {fact: response2.data.books },
+                {fact: response3.data.pages },
             ]);
         } catch (error){
             console.error('Error fetching fun facts:', error);
@@ -42,7 +42,6 @@ export const Dashboard = () => {
                                 <h1>Largest Book in Library</h1>
                                 {funFacts.length > 0 && (
                                     <div>
-                                    <h2>{funFacts[0].title}</h2>
                                     <p>{funFacts[0].fact}</p>
                             </div>
                         )}
@@ -53,7 +52,6 @@ export const Dashboard = () => {
                         <h1>Total Number of Books in Library</h1>
                         {funFacts.length > 1 && (
                             <div>
-                                <h2>{funFacts[1].title}</h2>
                                 <p>{funFacts[1].fact}</p>
                             </div>
                         )}
@@ -64,7 +62,6 @@ export const Dashboard = () => {
                         <h1>Total Pages in Library</h1>
                         {funFacts.length > 2 && (
                             <div>
-                                <h2>{funFacts[2].title}</h2>
                                 <p>{funFacts[2].fact}</p>
                             </div>
                         )}
