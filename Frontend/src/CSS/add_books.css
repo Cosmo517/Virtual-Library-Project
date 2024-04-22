@@ -24,7 +24,6 @@
     padding: 5px;
     margin-bottom: 0px;
     border-radius: 5px;
-    border: 1px dashed var(--accent4);
     color: var(--accent2);
 }
 
