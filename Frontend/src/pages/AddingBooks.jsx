@@ -65,6 +65,7 @@ export const AddingBooks = ({ isAuthenticated}) => {
         <div className="page-wrapper"> 
             <Navbar isAuthenticated={isAuthenticated }/>
             <div className='container1'>
+                <h5 className='center-text' style={{color: 'white'}}>Enter the information of a book you want to add</h5>
                 <form onSubmit={handleFormSubmit}>
                     <div className='mb-1 mt-3'>
                         <input type='text' className='form-control' placeholder='ISBN' id='isbn' name='isbn' onChange={handleInputChange} value={formData.isbn}/>
