@@ -49,19 +49,62 @@
     color: var(--accent5);
 }
 
-/* .modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 1050;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.6); 
-} */
+.modal-dialog {
+    max-width: 500px; 
+    margin: 10px;
+    color: var(--accent2)
+}
+
+.page-wrapper {
+    background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0; 
+    position: relative;
+}
+
+.container {
+    position: absolute; 
+    top: 40%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    width: 450px; 
+    height: 250px;
+    color: var(--background);
+}
+
+.btn-primary {
+    background-color: var(--accent5);
+    color: var(--accent4);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: right;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent4);
+    color: var(--accent5);
+}
+
+.btn-secondary {
+    background-color: var(--accent5);
+    color: var(--accent4);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: right;
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent4);
+    color: var(--accent5);
+}
 
 .modal-dialog {
     max-width: 500px; 
@@ -70,6 +113,11 @@
 }
 
 .modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    transform: translate(50%, 50%);
     background-color: var(--background);
     border-radius: 10px;
     border-color: var(--accent4);
@@ -77,6 +125,33 @@
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.97);
 }
+
+.modal-title {
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.modal-body {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.modal-footer {
+    text-align: right;
+}
+
+.footer {
+    font-family: 'Exo', sans-serif;
+    background-color: var(--accent2);
+    color: #ffffff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+}
+
 
 .modal-title {
     margin-bottom: 10px;
