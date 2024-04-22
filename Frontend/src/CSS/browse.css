@@ -31,8 +31,9 @@
 }
 
 .books-container {
-    width: 90%;
-    margin: auto; 
+    width: 30%;
+    float: left;
+    margin-left: 10px;
 }
 
 #search-bar-type {

@@ -138,6 +138,8 @@ export const Browse = () => {
                             </button>
                         </div>
                     </form>
+                </div>
+                <div className="books-list">
                     <BookList bookList={books}/>
                 </div>
             {/* Footer Section */}
