@@ -27,6 +27,7 @@
     padding: 10px 20px;
     cursor: pointer;
     float: right;
+    border: solid var(--accent4);
 }
 
 .btn-primary:hover {

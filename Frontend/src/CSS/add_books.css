@@ -22,26 +22,30 @@
 .container1 input[type='number'] {
     width: 100%;
     padding: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     border-radius: 5px;
     border: 1px dashed var(--accent4);
     color: var(--accent2);
 }
 
-.container button {
-    width: 100%;
-    padding: 10px;
+.btn-primary7 {
+    width: auto; 
+    padding: 10px 20px; 
     border: none;
     border-radius: 5px;
-    background-color: var(--accent4);
-    color: var(--text-color);
+    background-color: var(--accent5);
+    color: var(--accent4);
+    border: 1px solid var(--accent4);
     cursor: pointer;
+    margin-top: 20px; 
+    float: right; 
 }
 
-.container button:hover {
-    background-color: var(--accent3);
-    color: var(--accent1);
+.btn-primary7:hover {
+    background-color: var(--accent4);
+    color: var(--accent5);
 }
+
 
 #info {
     color: var(--accent2);

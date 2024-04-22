@@ -1,3 +1,64 @@
-.button-spacing {
-    float: right;
+.page-wrapper {
+    background: -webkit-linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 0; 
+    position: relative;
+}
+
+.container4 {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    border-radius: 5px;
+    border: solid var(--accent4);
+    box-shadow: 0 0 10px var(--accent4);
+    width: 600px;
+    max-width: 90%; 
+    height: 400px;
+    padding: 50px; 
+    background-color: #ffffff9f;
+    font-family: 'Exo', sans-serif;
+    color: var(--accent2);
+}
+
+.container4 h4 {
+    font-size: 40px; 
+    margin-bottom: 20px;
+    color: var(--accent2);
+}
+
+
+.btn-primary5 {
+    border: solid var(--accent4);
+    border-radius: 5px;
+    background-color: #2c4ed7; 
+    color: var(--accent4); 
+    margin-top: 20px;
+}
+
+.btn-primary5:hover {
+    background-color: var(--accent4); 
+    color: var(--accent5); 
+}
+
+.btn-primary6 {
+    border: solid var(--accent4);
+    border-radius: 5px;
+    background-color: #2c4ed7; 
+    color: var(--accent4); 
+    margin-top: 20px;
+    float: right; 
+}
+
+.btn-primary6:hover {
+    background-color: var(--accent4); 
+    color: var(--accent5); 
+}
+
+.mb-1 {
+    border: solid var(--accent4);
+    border-radius: 5px;
+    margin-top: 15px;
 }
