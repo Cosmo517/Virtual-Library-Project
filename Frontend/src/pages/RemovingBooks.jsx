@@ -74,7 +74,7 @@ export const RemovingBooks = ({ isAuthenticated }) => {
     return (
         <div className="page-wrapper"> 
             <Navbar isAuthenticated={isAuthenticated} />
-            <div className="container" style={ { marginTop: "100px"} }>
+            <div className="container2" style={ { marginTop: "100px"} }>
                 <form onSubmit={handleFormSubmit}>
                     <p>Please enter the ISBN of the book you wish to remove</p>
                     <div className="mt-1 mb-3">

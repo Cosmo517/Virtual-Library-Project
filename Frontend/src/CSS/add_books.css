@@ -6,29 +6,23 @@
     position: relative; 
 }
 
-.container {
-    position: absolute; 
+.container1 {
+    position: absolute;
     top: 50%;
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    padding: 10px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px #95ffae6f; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #95ffae6f;
     width: 600px;
     height: 510px;
 }
 
-.container form {
-    width: 100%; 
-    max-width: 500px;
-    margin: 0 auto; 
-}
-
-.container input[type='text'],
-.container input[type='number'] {
+.container1 input[type='text'],
+.container1 input[type='number'] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
     border-radius: 5px;
     border: 1px dashed var(--accent4);
     color: var(--accent2);
