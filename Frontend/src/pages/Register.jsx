@@ -84,7 +84,7 @@ export const Register = () => {
                         <input type='password' className='form-control' placeholder='Retype Password' id='checkpass' name='checkpass' onChange={handleInputChange} value={formData.checkpass}/>
                     </div>
 
-                    <label id='info'>Password must be 10 characters or longer</label> <br/>
+                    <label id='info'>Passwords must be 10 characters or longer</label> <br/>
 
                     <button type='submit' className='btn btn-primary5'>
                         Register
