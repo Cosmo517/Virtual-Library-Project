@@ -12,7 +12,7 @@
     left: 50%; 
     transform: translate(-50%, -50%); 
     border-radius: 5px;
-    border: dashed var(--accent4);
+    border: solid var(--accent4);
     box-shadow: 0 0 10px var(--accent4);
     width: 600px;
     max-width: 90%; 
@@ -20,7 +20,7 @@
     padding: 20px; 
     background-color: #ffffff9f;
     font-family: 'Exo', sans-serif;
-    color: var(--accent4);
+    color: var(--accent2);
     font-size: 15px; 
 }
 

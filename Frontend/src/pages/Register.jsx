@@ -59,8 +59,8 @@ export const Register = () => {
     };
 
     return (
-        <>
-            <div className='container'>
+        <div className='page-wrapper'>
+            <div className='container4'>
                 <h4>
                     <center>
                         Create an Account
@@ -82,15 +82,15 @@ export const Register = () => {
 
                     <label id='info'></label> <br/>
 
-                    <button type='submit' className='btn btn-primary'>
+                    <button type='submit' className='btn btn-primary5'>
                         Register
                     </button>
 
-                    <button className='btn btn-primary button-spacing' onClick={() => {window.location.href='/#/login'}}>
+                    <button className='btn btn-primary6 button-spacing' onClick={() => {window.location.href='/#/login'}}>
                         Back to Login
                     </button>
                 </form>
             </div>
-        </>
+        </div>
     );
 }

@@ -38,11 +38,11 @@ export const Login = () => {
     };
 
     return (
-        <>
-            <div className='container'>
+        <div className='page-wrapper'>
+            <div className='container3'>
                 <h4>
                     <center>
-                        Please enter you login information
+                        Please Enter Your Login Information
                     </center>
                 </h4>
                 <form onSubmit={handleFormSubmit}>
@@ -56,15 +56,15 @@ export const Login = () => {
 
                     <label id='info'></label> <br/>
 
-                    <button type='submit' className='btn btn-primary'>
+                    <button type='submit' className='btn btn-primary3'>
                         Login
                     </button>
                 
-                    <button className='btn btn-primary button-spacing' onClick={() => {window.location.href='/#/register'}}>
+                    <button className='btn btn-primary4 button-spacing' onClick={() => {window.location.href='/#/register'}}>
                         Register an Account
                     </button>
                 </form>
         </div>
-    </>
+    </div>
     )
 }

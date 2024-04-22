@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.container {
+.container2 {
     position: absolute; 
     top: 40%; 
     left: 50%; 
@@ -27,6 +27,7 @@
     padding: 10px 20px;
     cursor: pointer;
     float: right;
+    border: solid var(--accent4);
 }
 
 .btn-primary:hover {
@@ -49,7 +50,7 @@
     color: var(--accent5);
 }
 
-.modal {
+/* .modal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,7 +62,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6); 
-}
+} */
 
 .modal-dialog {
     max-width: 500px; 
@@ -73,9 +74,8 @@
     background-color: var(--background);
     border-radius: 10px;
     border-color: var(--accent4);
-    box-shadow: 0 0 10px var(--accent4);
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.97);
+    font-size: 14px;
+    text-align: center;
 }
 
 .modal-title {
