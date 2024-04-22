@@ -1,11 +1,10 @@
 .book-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
   
 .book {
-  width: 275px;
   padding: 25px;
   margin: 10px;
   border-radius: 5px;
@@ -15,7 +14,6 @@
   font-size: 20px;
   margin-right: 1px;
 }
-
 
 .book p {
   font-size: 14px;
