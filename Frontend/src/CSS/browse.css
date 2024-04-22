@@ -27,16 +27,24 @@
     border-radius: 5px; 
     padding: 10px 20px; 
     cursor: pointer;
+    border: solid 1px var(--accent4);
 }
 
 .books-container {
-    width: 50%;
+    width: 90%;
     margin: auto; 
 }
 
 #search-bar-type {
     margin-top: 100px;
     margin-bottom: 15px;
+    margin-left: 20px;
+    border: solid 1px var(--accent4);
+}
+
+#search-bar {
+    margin-left: 20px;
+    border: solid 1px var(--accent4);
 }
 
 .center-text {
@@ -55,6 +63,7 @@
 
 .filter-container button:hover {
     background-color: var(--accent4); 
+    color: #2c4ed7;
 }
 
 .filter-container input[type="number"],
@@ -66,17 +75,12 @@
     padding: 10px; 
 }
 
-.filter-container input[type="number"]::placeholder,
-.filter-container input[type="text"]::placeholder {
-    color: #95ffae;
-}
-
 .search_button {
-    margin-left: 0px; 
+    margin-left: 20px; 
     margin-top: 15px; 
     background-color: var(--accent5);
     color: var(--accent4);
-    border: none;
+    border: solid 1px var(--accent4);
     border-radius: 5px; 
     padding: 10px 20px;
     cursor: pointer; 
