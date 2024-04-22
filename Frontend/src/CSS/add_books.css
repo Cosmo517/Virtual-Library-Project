@@ -16,7 +16,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px #95ffae6f;
     width: 600px;
-    height: 550px;
+    height: 555px;
 }
 
 .container1 input[type='text'],
@@ -37,7 +37,6 @@
     color: var(--accent4);
     border: 1px solid var(--accent4);
     cursor: pointer;
-    margin-top: 20px; 
     float: right; 
 }
 
