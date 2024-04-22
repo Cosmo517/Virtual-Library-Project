@@ -87,7 +87,7 @@ export const RemovingBooks = ({ isAuthenticated }) => {
                         value={formData.isbn}/>
                     </div>
 
-                    <label id='info'></label>
+                    <label style={{color: "white"}} id='info'></label>
 
                     <button 
                         type='submit' 

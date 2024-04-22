@@ -23,7 +23,7 @@ export const Register = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         let info = document.getElementById('info')
-        if (formData.username !== '' && formData.password.length >= 10 && formData.password == formData.checkpass)
+        if (formData.username !== '' && formData.password.length >= 10 && formData.password == formData.checkpass && formData.username <= 25)
         {
             let response = await api.post('/users/', formData)
             if (response.data.response == 'Accepted')
@@ -47,6 +47,10 @@ export const Register = () => {
         else if (formData.username === '')
         {
             info.innerHTML = 'Username cannot be blank'
+        }
+        else if (formData.username > 25)
+        {
+            info.innerHTML = 'Username must be 25 characters or less'
         }
         else if (formData.password != formData.checkpass)
         {
@@ -80,7 +84,7 @@ export const Register = () => {
                         <input type='password' className='form-control' placeholder='Retype Password' id='checkpass' name='checkpass' onChange={handleInputChange} value={formData.checkpass}/>
                     </div>
 
-                    <label id='info'></label> <br/>
+                    <label id='info'>Password must be 10 characters or longer</label> <br/>
 
                     <button type='submit' className='btn btn-primary5'>
                         Register

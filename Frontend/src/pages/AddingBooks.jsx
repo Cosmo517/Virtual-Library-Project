@@ -95,7 +95,7 @@ export const AddingBooks = ({ isAuthenticated}) => {
                         <input type='text' className='form-control' placeholder='Genre' id='category' name='category' onChange={handleInputChange} value={formData.category}/>
                     </div>
                 
-                    <label id='info'></label> <br/>
+                    <label style={{color: 'white'}}id='info'></label> <br/>
 
                     <button type='submit' className='btn btn-primary7'>
                         Add Book
