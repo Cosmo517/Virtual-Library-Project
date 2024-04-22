@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import api from '../api'
 import '../CSS/custom_nav_padding.css'
 import '../CSS/login.css'
@@ -12,14 +12,18 @@ export const Login = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        // grab the info element for error messages
         let info = document.getElementById('info')
+        // create a signed JWT on user login
         let signedjwt = await api.post('/login/', formData)
         setFormData({
             username: '',
             password: ''
         })
+
         if (signedjwt['data']['token'])
         {
+            // Store the token as a cookie and reroute to the dashboard
             Cookies.set('token', signedjwt['data']['token'])
             window.location.href='/';
         }

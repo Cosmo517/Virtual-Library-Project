@@ -1,12 +1,14 @@
 from sqlalchemy import Boolean, Column, Integer, String
 from database import Base
 
+# create the User table within the database
 class User(Base):
     __tablename__ = 'users'
     username = Column(String(25), primary_key=True, index=True)
     password = Column(String(512), nullable=False)
     administrator = Column(Integer, nullable=False)
-    
+
+# create the Book table within the database
 class Books(Base):
     __tablename__ = 'books'
     isbn = Column(String(14), primary_key=True, index=True)

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import api from '../api'
 import { Navbar } from '../Components/Navbar';
 import '../CSS/add_books.css'
@@ -15,6 +15,7 @@ export const AddingBooks = ({ isAuthenticated}) => {
         category: ''
     });
 
+    // handle any input change for the formData
     const handleInputChange = (event) => {
         const value = event.target.value
         setFormData({
@@ -23,9 +24,12 @@ export const AddingBooks = ({ isAuthenticated}) => {
         });
     };
 
+    // handle form submission
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        // grab the info label incase we need to display error messages
         let info = document.getElementById('info')
+        // check to see if any formData is empty and display an error
         for (const key in formData) {
             if (formData[key] == '') {
                 info.innerHTML = 'One or more fields are empty'
@@ -33,9 +37,12 @@ export const AddingBooks = ({ isAuthenticated}) => {
             }
         }
         
+        // grab form information and turn it into the correct data types
         formData.isbn = formData.isbn.replace(/[^0-9]/g, "")
         formData.page_count = parseInt(formData.page_count);
         formData.publish_year = parseInt(formData.publish_year);
+
+        // try and create the post
         let response = await api.post('/books/', formData)
         if (response.data.response == 'success')
         {

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import api from '../api'
 import '../CSS/custom_nav_padding.css'
 import '../CSS/register.css'
@@ -22,9 +22,12 @@ export const Register = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        // grab the info element incase we need to display error messages
         let info = document.getElementById('info')
+        // verify that the username is valid and that the passwords are valid
         if (formData.username !== '' && formData.password.length >= 10 && formData.password == formData.checkpass && formData.username <= 25)
         {
+            // make a request to the backend
             let response = await api.post('/users/', formData)
             if (response.data.response == 'Accepted')
             {

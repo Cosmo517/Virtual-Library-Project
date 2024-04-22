@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../CSS/custom_nav_padding.css';
 
 export const Navbar = () => {

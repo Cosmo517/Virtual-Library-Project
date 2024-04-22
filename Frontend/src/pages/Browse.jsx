@@ -5,42 +5,7 @@ import api from "../api";
 import '../CSS/browse.css'
 
 
-export const Browse = () => {
-
-    
-    const [isAdmin, setIsAdmin] = useState(false)
-
-    const checkUserRole = async () =>
-    {
-        try 
-        {
-            if (Cookies.get('token') === undefined)
-            {
-                setIsAdmin(false)
-            }
-            else
-            {
-                const token = await api.post("/token/", { 'token' : Cookies.get('token') })
-                if (token.data != null && token.data.administrator == 1)
-                {
-                    setIsAdmin(true)
-                }
-                else
-                {
-                    setIsAdmin(false)
-                }
-            }
-        }
-        catch (err)
-        {
-            setIsAdmin(false)
-        }
-    }
-
-    useEffect(() => {
-        checkUserRole();
-    }, []);
-    
+export const Browse = () => {    
     const [books, setBooks] = useState([])
 
     const [formData, setFormData] = useState({
@@ -49,7 +14,6 @@ export const Browse = () => {
     })
 
     const handleFormSubmit = () => {
-        event.preventDefault();
         handleFilter();
     };
 
@@ -61,33 +25,33 @@ export const Browse = () => {
         });
     };
 
+    // Handle the different filtering options
     const handleFilter = async () => {
-        let titleSelectedAZ = true;
         let titleSelectedZA = false;
         try {
+            // try to grab the titleSelector element to see if its checked (ZA)
             let titleSelectorZA = document.getElementById('title-za')
             titleSelectedZA = titleSelectorZA.checked;
         }
-        catch { }
+        catch { err }
+        // grab the following elements and set basic values
         let yearBefore = document.getElementById('yearBefore').value == '' ? 0 : document.getElementById('yearBefore').value
         let yearAfter = document.getElementById('yearAfter').value == '' ? 9999 : document.getElementById('yearAfter').value
         let searchBar = document.getElementById('search-bar').value
 
-        if (titleSelectedAZ && titleSelectedZA) 
-        {
-            titleSelectedAZ = false;
-        }
-
+        // create a dictionary for the request
         let data = {'search': searchBar,
                     'searchType': formData.searchType,
-                    'AZ': titleSelectedAZ,
                     'ZA': titleSelectedZA,
                     'yearBefore': parseInt(yearBefore),
-                    'yearAfter': parseInt(yearAfter) }    
+                    'yearAfter': parseInt(yearAfter) }   
+        // send request to backend
         let filtered_books = await api.post('/filter/', data)
+        // turn the response dictionary into an array
         setBooks(Array.from(filtered_books.data))
     }
 
+    // On refresh grab the books from the database
     useEffect(() => {
         const grab_books = async () => {
             const booksResponse = await api.get("/books/")

@@ -11,18 +11,18 @@ if (os.path.isfile('dev.cfg')):
 else:
     config_file = 'settings.cfg'
         
-# Read from the configuration file
+# read from the configuration file
 config = configparser.ConfigParser()
 config.read(config_file)
 
+# grab all the database info from the config file
 db_host = config['DATABASE']['HOST']
 db_port = config['DATABASE']['PORT']
 db_schema = config['DATABASE']['SCHEMA']
 db_user = config['DATABASE']['USER']
 db_password = config['DATABASE']['PASSWORD']
 
-
-
+# set the database up
 URL_DATABASE = f'mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_schema}'
 
 engine = create_engine(URL_DATABASE)

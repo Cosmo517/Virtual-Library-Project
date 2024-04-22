@@ -1,5 +1,5 @@
 import { Navbar } from "../Components/Navbar";
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Cookies from "js-cookie";
 import '../CSS/usersettings.css'
 import api from "../api";
@@ -19,13 +19,16 @@ export const UserSettings = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
+        // grab the info element incase we need to display error messages
         let info = document.getElementById('info')
 
+        // validate the user passwords
         if (formData.oldPassword != '' && formData.newPassword != '' && formData.checkNewPass != '') {
             if (formData.newPassword == formData.checkNewPass && formData.newPassword.length >= 10) {
+                // grab the user token
                 formData.token = Cookies.get('token')
+                // send the request to the backend
                 let response = await api.post('/passwords/', formData)
-                console.log(response)
                 if (response.data.response == 'Accepted')
                 {
                     setFormData({

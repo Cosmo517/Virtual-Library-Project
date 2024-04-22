@@ -30,9 +30,11 @@ export const RemovingBooks = ({ isAuthenticated }) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
+        // grab the info element incase we need to display error messages
         let info = document.getElementById('info')
         if (formData.isbn !== '')
         {
+            // remove the - within the ISBN and only allow numbers
             formData.isbn = formData.isbn.replace(/[^0-9]/g, "")
             let response = await api.post("/single_book/", formData)
             if (response.data == null)

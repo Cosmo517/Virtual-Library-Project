@@ -10,19 +10,28 @@ if (os.path.isfile('dev.cfg')):
 else:
     config_file = 'settings.cfg'
         
-# Read from the configuration file
+# read the data from the config file
 config = configparser.ConfigParser()
 config.read(config_file)
 
+# grab the secret and algorithm
 JWT_secret = config['JWT']['secret']
 JWT_algorithm = config['JWT']['algorithm']
 
-# returns the generated tokens (JWT)
+# returns the generated token (JWT)
 def token_response(token: str):
     return { "token" : token }
 
-# creates a token (JWT)
 def signJWT(username: str, administrator: int):
+    """Creates a token with a specified payload (JWT)
+
+    Args:
+        username (str): The username of the user
+        administrator (int): Whether that user is an administrator (1) or not (0)
+
+    Returns:
+        dict: Contains a key called token, and the value of the token
+    """
     payload = {
         "username" : username,
         "administrator" : administrator,
@@ -31,9 +40,16 @@ def signJWT(username: str, administrator: int):
     token = jwt.encode(payload, JWT_secret, algorithm=JWT_algorithm)
     return token_response(token)
 
-# decodes the JWT token, returns whether its expired or not
 def decodeJWT(token: str):
-    # print('Decode before: ', token)
+    """Decodes the JWT token and returns the decoded information if the
+    token is not expired.
+
+    Args:
+        token (str): The token to decode
+
+    Returns:
+        dict: An empty dictionary or a dictionary with the decoded information
+    """
     try:
         decode_token = jwt.decode(token, JWT_secret, JWT_algorithm)
         return decode_token if decode_token['expire'] >= time.time() else None

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Book } from "./Book";
 import '../CSS/browse.css'
 import '../CSS/bookslist.css'
 
 export const BookList = ({ bookList }) => {
-    const books = bookList
+    const books = bookList // The list of books to display
 
     return (
         <div className="book-list">
