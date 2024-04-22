@@ -1,15 +1,23 @@
 .page-wrapper9 {
     background: linear-gradient(35deg, var(--accent2), var(--accent5), var(--accent3)); 
     min-height: auto;
-    height: 200vh;
     margin: 0; 
-    padding: 0; 
+    padding: 0;
+    padding-bottom: 30px;
     position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .filter-container {
-    width: 20%; 
-    height: auto;
+    width: 100%; 
+    height: 13%;
     margin-left: 20px;
     margin-top: 100px;
     border: 1px solid #95ffae; 
@@ -18,7 +26,7 @@
     background-color: #151b46; 
     color: var(--background);
     padding: 20px;
-    float: left; 
+    /* float: left;  */
 }
 
 .btn-primary1 {
@@ -34,7 +42,7 @@
 .books-container {
     width: 70%;
     float: left;
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 #search-bar-type {
