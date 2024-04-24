@@ -25,7 +25,7 @@ export const Register = () => {
         // grab the info element incase we need to display error messages
         let info = document.getElementById('info')
         // verify that the username is valid and that the passwords are valid
-        if (formData.username !== '' && formData.password.length >= 10 && formData.password == formData.checkpass && formData.username <= 25)
+        if (formData.username !== '' && formData.password.length >= 10 && formData.password == formData.checkpass && formData.username.length <= 25)
         {
             // make a request to the backend
             let response = await api.post('/users/', formData)
