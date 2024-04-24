@@ -29,7 +29,7 @@ export const Register = () => {
         {
             // make a request to the backend
             let response = await api.post('/users/', formData)
-            if (response.data.response == 'Accepted')
+            if (response.data.response == 'Success')
             {
                 setFormData({
                     username: '',
