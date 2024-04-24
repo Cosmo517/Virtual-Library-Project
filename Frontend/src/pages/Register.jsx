@@ -59,6 +59,10 @@ export const Register = () => {
         {
             info.innerHTML = 'New passwords do not match'
         }
+        else if (formData.password.length < 10)
+        {
+            info.innerHTML = "Password is not 10 characters or longer"
+        }
         else
         {
             info.innerHTML = 'Error'
