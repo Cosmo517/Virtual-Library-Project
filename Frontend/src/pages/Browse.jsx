@@ -13,7 +13,8 @@ export const Browse = () => {
         searchType: 'Title'
     })
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
         handleFilter();
     };
 
@@ -33,7 +34,10 @@ export const Browse = () => {
             let titleSelectorZA = document.getElementById('title-za')
             titleSelectedZA = titleSelectorZA.checked;
         }
-        catch { err }
+        catch (err)
+        {
+            console.log('error!')
+        }
         // grab the following elements and set basic values
         let yearBefore = document.getElementById('yearBefore').value == '' ? 0 : document.getElementById('yearBefore').value
         let yearAfter = document.getElementById('yearAfter').value == '' ? 9999 : document.getElementById('yearAfter').value
@@ -49,6 +53,7 @@ export const Browse = () => {
         let filtered_books = await api.post('/filter/', data)
         // turn the response dictionary into an array
         setBooks(Array.from(filtered_books.data))
+        console.log(filtered_books)
     }
 
     // On refresh grab the books from the database

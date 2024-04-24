@@ -238,7 +238,6 @@ async def filter_books(filter: SearchRequest, db: db_dependency):
     ZA = search_info['ZA']
     yearBefore = search_info['yearBefore']
     yearAfter = search_info['yearAfter']
-    print(yearBefore)
     
     # Filter the books based on the searchType, then on the alphabet order
     filtered_books = {}
